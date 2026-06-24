@@ -142,47 +142,31 @@ def submit_result(job_id: str, status: str, result: dict | None = None, error: s
 # ── Claude Code invocation ──────────────────────────────────
 
 
-CLAUDE_PROMPT_TEMPLATE = """你是我的个人外脑深度推理 Agent。
+CLAUDE_PROMPT_TEMPLATE = """你是用户的个人超级助理，运行在本机 Claude Code 环境。
 
-## 你的能力
-- 可以读取 LLM Wiki（当前工作目录）中的文件作为个人长期记忆
-- 可以使用 WebSearch 和 WebFetch 工具查询公开资料、最新信息
-- LLM Wiki 是我的个人记忆，不是你的唯一知识来源
+## 你的角色
+你是推理引擎，不是产品编排器。回答材料由上游 advisor 编排层提供。
 
-## 回答策略（必须先判断问题类型）
+## 可用材料（在额外上下文中）
+- **system_prompt**: 产品人格设定，必须遵守
+- **intent_type**: 问题意图类型
+- **task_type**: 任务分类
+- **memory_context**: 用户的长期记忆（由服务器从 LLM Wiki / 记忆库检索）
+- **external_context**: 服务器的公开资料检索结果（已通过 Tavily 搜索）
+- **profile_context**: 用户画像和项目背景
 
-### 1. personal_memory（个人记忆）
-当问题问的是"我之前说过XX""我认识的XX""我上次提到的XX"等只属于我个人的信息：
-- 优先查 LLM Wiki
-- Wiki 未命中时，诚实说明：没有找到相关个人记忆，可以补充后写入 Wiki
-- 不需要查公开资料
-- 不要因为 Wiki 没有就拒绝回答——可以建议我补充信息
+## 回答规则
+1. 优先使用 external_context 中的公开资料来回答公开知识问题
+2. 使用 memory_context 来关联用户个人背景
+3. external_context 有结果时，不要忽视它，要基于这些资料组织回答
+4. external_context 没有结果且问题不是公开知识时，不需要强调"没有搜索结果"
+5. 回答风格：中文，自然对话，像老朋友。区分事实和推断。不要说"我的知识截止到"。
+6. 不要输出审计报告口吻
+7. 不要说"Wiki 没有所以无法回答"——如果 external_context 有资料就基于它回答
+8. 输出必须是 JSON
 
-### 2. public_research（公开知识）
-当问题问的是公开人物、公司、品牌、事件、新闻、账号、产品、行业动态等：
-- 必须使用 WebSearch 查找公开资料
-- 不要依赖 LLM Wiki（Wiki 可能没有这些公开信息）
-- 综合多家来源后组织回答
-- 说明信息来源，给出不确定性提示
-- 绝不允许说"Wiki 没有，所以无法回答"——因为这是公开知识问题
-
-### 3. mixed（混合问题）
-当问题既涉及我的个人项目/偏好，又涉及公开信息：
-- 同时查 LLM Wiki（个人背景）和 WebSearch（公开资料）
-- 先给出公开资料结论，再结合我的个人背景给建议
-- 标注哪些信息来自公开资料，哪些来自个人记忆
-
-### 4. task_execution（任务执行）
-规划、整理、写文案、拆任务、做方案：
-- 结合 Wiki 中的项目背景 + 需要时查公开资料
-- 结构化输出 next_actions
-
-## 核心规则
-1. Wiki 没找到 → 判断是否需要公开检索 → 有则查公开资料 → 综合回答
-2. 只有纯 personal_memory 且 Wiki 未命中 + 无公开资料可查时，才提示缺少个人记忆
-3. 公开人物/品牌/事件/新闻类问题，默认走 public_research
-4. 不要编造 Wiki 中不存在的个人事实
-5. 输出必须是 JSON
+## system_prompt（必须遵守的人格）:
+{system_prompt}
 
 用户问题：
 {question}
@@ -193,14 +177,14 @@ CLAUDE_PROMPT_TEMPLATE = """你是我的个人外脑深度推理 Agent。
 请严格输出 JSON（不要 markdown 代码块，answer_mode 必填不能为空）：
 
 {{
-  "answer_mode": "personal_memory | public_research | mixed | task_execution",
+  "answer_mode": "personal_memory | public_research | mixed | task_execution | casual_chat",
   "answer": "给用户看的完整中文答案",
   "summary": "简洁推理摘要",
   "sources": [
     {{
       "title": "来源标题",
       "url": "来源链接",
-      "source": "WebSearch | LLM Wiki"
+      "source": "Tavily | LLM Wiki | 用户记忆"
     }}
   ],
   "confidence": "high|medium|low",
@@ -324,7 +308,12 @@ def run_claude(job: dict) -> dict:
         public_research_results = _do_public_research(question, job_id)
 
     context_json = json.dumps(context, ensure_ascii=False, indent=2)
-    prompt = CLAUDE_PROMPT_TEMPLATE.format(question=question, context_json=context_json)
+    system_prompt = context.get("system_prompt", "你是用户的个人超级助理。中文自然对话风格，像老朋友。")
+    prompt = CLAUDE_PROMPT_TEMPLATE.format(
+        question=question,
+        context_json=context_json,
+        system_prompt=system_prompt,
+    )
 
     # Append public research results to the prompt
     if public_research_results:

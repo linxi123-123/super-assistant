@@ -6,11 +6,9 @@ let pollTimer = null;
 
 const statusCopy = {
   ready: "我已上线，记忆与上下文连接完成。<br>你可以直接把问题交给我，我会帮你整理思路、分析信息或推进下一步。",
-  pending: "正在连接你的本机外脑",
-  claimed: "我接到这个问题了，正在调动记忆",
-  running: "正在整理上下文并合成答案",
-  succeeded: "整理好了，我把结果给你",
-  failed: "本机外脑暂时没接上，请确认 local_claude_worker.py 正在运行",
+  processing: "正在处理你的问题…",
+  done: "整理好了，我把结果给你",
+  error: "处理遇到了问题，请稍后重试",
 };
 
 function esc(value) {
@@ -31,68 +29,101 @@ function formatText(text) {
 
 function setAnswer(html, state = "") {
   const answer = $("#answerCopy");
+  if (!answer) return;
   answer.className = `answer-copy ${state}`.trim();
   answer.innerHTML = html;
 }
 
 function setDebug({ jobId = "-", status = "ready", confidence = "-", message = "等待输入" } = {}) {
-  $("#debugJobId").textContent = jobId || "-";
-  $("#debugStatus").textContent = status || "-";
-  $("#debugConfidence").textContent = confidence || "-";
-  $("#debugMessage").textContent = message || "-";
+  const elJob = $("#debugJobId");
+  const elStatus = $("#debugStatus");
+  const elConf = $("#debugConfidence");
+  const elMsg = $("#debugMessage");
+  if (elJob) elJob.textContent = jobId || "-";
+  if (elStatus) elStatus.textContent = status;
+  if (elConf) elConf.textContent = confidence || "-";
+  if (elMsg) elMsg.textContent = message || "-";
 }
 
 function addQuestionCard(question) {
+  const stack = $("#answerStack");
+  if (!stack) return;
   const card = document.createElement("article");
   card.className = "question-card";
   card.textContent = question;
-  $("#answerStack").insertBefore(card, $("#answerCard"));
+  const answerCard = $("#answerCard");
+  if (answerCard) stack.insertBefore(card, answerCard);
+  else stack.appendChild(card);
 }
 
-function renderResult(data) {
-  const result = data.result || {};
-  const answer = result.answer || "我已经收到结果，但这次没有拿到可展示的回答。";
+function renderAdvisorResponse(data) {
+  // data is AdvisorChatResponse: { answer, task_type, actions, external_data, memory, meta, ... }
+  const answer = data.answer || data.core_judgment || "已收到回答。";
   let html = formatText(answer);
 
   const blocks = [];
 
-  // Answer mode indicator
-  if (result.answer_mode) {
-    const modeLabels = { personal_memory: "基于你的长期记忆", public_research: "基于公开资料查询", mixed: "结合记忆和公开资料", task_execution: "任务规划" };
-    const label = modeLabels[result.answer_mode] || result.answer_mode;
+  // Answer mode from meta
+  const answerMode = (data.meta || {}).answer_mode || data.answer_mode;
+  if (answerMode) {
+    const modeLabels = {
+      personal_memory: "基于你的长期记忆",
+      public_research: "基于公开资料查询",
+      mixed: "结合记忆和公开资料",
+      task_execution: "任务规划",
+      casual_chat: "外脑对话"
+    };
+    const label = modeLabels[answerMode] || answerMode;
     blocks.push(`<section class="info-block"><h3>回答来源</h3><p>${esc(label)}</p></section>`);
   }
 
-  if (result.summary) {
-    blocks.push(`<section class="info-block"><h3>处理摘要</h3><p>${esc(result.summary)}</p></section>`);
+  // External data / sources
+  const sources = data.external_sources || [];
+  if (sources.length) {
+    blocks.push(`<section class="info-block"><h3>信息来源</h3><ul>${sources.slice(0,5).map(s => {
+      const title = s.title || s.source || "来源";
+      const url = s.url || "";
+      return url ? `<li><a href="${esc(url)}" target="_blank" rel="noopener">${esc(title)}</a></li>` : `<li>${esc(title)}</li>`;
+    }).join("")}</ul></section>`);
   }
 
-  // Sources
-  if (Array.isArray(result.sources) && result.sources.length) {
-    blocks.push(`<section class="info-block"><h3>信息来源</h3><ul>${result.sources.map(s => `<li>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.source)}</a>` : esc(s.title || s.source)}</li>`).join("")}</ul></section>`);
+  // Actions
+  const actions = data.actions || [];
+  if (actions.length) {
+    blocks.push(`<section class="info-block"><h3>下一步建议</h3><ul>${actions.map(a => `<li>${esc(typeof a === 'string' ? a : a.description || a.action || '')}</li>`).join("")}</ul></section>`);
   }
-  if (Array.isArray(result.next_actions) && result.next_actions.length) {
-    blocks.push(`<section class="info-block"><h3>下一步建议</h3><ul>${result.next_actions.map((item) => `<li>${esc(item)}</li>`).join("")}</ul></section>`);
+
+  // Memory
+  const memory = data.memory || {};
+  if (memory.candidate_memory_count > 0) {
+    blocks.push(`<section class="info-block"><h3>记忆</h3><p>已沉淀 ${memory.candidate_memory_count} 条候选记忆</p></section>`);
   }
-  if (Array.isArray(result.memory_updates) && result.memory_updates.length) {
-    blocks.push(`<section class="info-block"><h3>建议更新记忆</h3>${result.memory_updates.map((item) => `<p>${esc(item.content || item.reason || item.target || "")}</p>`).join("")}</section>`);
-  }
+
   if (blocks.length) {
     html += `<div class="structured-blocks">${blocks.join("")}</div>`;
   }
 
   setAnswer(html);
   setDebug({
-    jobId: data.job_id,
-    status: data.status,
-    confidence: result.confidence || "-",
-    message: result.debug_message || result.summary || statusCopy.succeeded,
+    jobId: data.audit_id || "-",
+    status: "succeeded",
+    confidence: "-",
+    message: data.task_type || "advisor_response",
   });
+
+  // Update header meta
+  const metaEl = document.querySelector(".answer-meta");
+  if (metaEl) {
+    const provider = data.provider || "super-assistant";
+    metaEl.innerHTML = `<span class="answer-sigil"></span>外脑 · ${esc(provider)} · ${esc(data.task_type || "")}`;
+  }
 }
 
 function setInputDisabled(disabled) {
-  $("#sendBtn").disabled = disabled;
-  $("#chatInput").disabled = disabled;
+  const send = $("#sendBtn");
+  const input = $("#chatInput");
+  if (send) send.disabled = disabled;
+  if (input) input.disabled = disabled;
 }
 
 function autoResize(textarea) {
@@ -100,106 +131,35 @@ function autoResize(textarea) {
   textarea.style.height = `${Math.min(textarea.scrollHeight, 128)}px`;
 }
 
-function updateProductStatus(status, data = {}) {
-  const copy = statusCopy[status] || statusCopy.running;
-  const state = status === "failed" ? "failed" : (status === "succeeded" || status === "ready" ? "" : "processing");
-  setAnswer(copy, state);
-  setDebug({
-    jobId: data.job_id || currentJobId || "-",
-    status,
-    confidence: data.result?.confidence || "-",
-    message: data.error || data.result?.debug_message || copy.replace(/<br>/g, " "),
-  });
-}
+// ── Core: call /api/advisor/chat ────────────────────────────
 
-async function createJob(question) {
-  const response = await fetch(`${API}/api/local-agent/jobs`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      user_id: "default_user",
-      task_type: "deep_reasoning",
-      question,
-      context: {
-        source: "main_chat_ui",
-        mode: "local_claude_worker_default",
-        use_llm_wiki: true,
-        allow_public_research: true,
-        answer_policy: "memory_plus_public_research",
-        public_research_required_for_current_knowledge: true,
-      },
-    }),
-  });
+async function submitQuestion(question) {
+  setInputDisabled(true);
+  addQuestionCard(question);
+  setAnswer("正在处理你的问题…", "processing");
 
-  if (!response.ok) {
-    throw new Error(`create_job_http_${response.status}`);
-  }
-  return response.json();
-}
-
-async function pollJob(jobId) {
   try {
-    const response = await fetch(`${API}/api/local-agent/jobs/${encodeURIComponent(jobId)}`);
+    const response = await fetch(`${API}/api/advisor/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: question,
+        user_id: "default_user",
+      }),
+    });
+
     if (!response.ok) {
-      pollTimer = window.setTimeout(() => pollJob(jobId), 2200);
-      return;
+      throw new Error(`advisor_http_${response.status}`);
     }
 
     const data = await response.json();
-    const status = data.status || "running";
-    updateProductStatus(status, data);
-
-    if (status === "pending") {
-      pollTimer = window.setTimeout(() => pollJob(jobId), 1800);
-      return;
-    }
-    if (status === "claimed" || status === "running") {
-      pollTimer = window.setTimeout(() => pollJob(jobId), 2600);
-      return;
-    }
-    if (status === "succeeded") {
-      renderResult(data);
-      currentJobId = null;
-      setInputDisabled(false);
-      return;
-    }
-    if (status === "failed") {
-      updateProductStatus("failed", data);
-      currentJobId = null;
-      setInputDisabled(false);
-      return;
-    }
-
-    pollTimer = window.setTimeout(() => pollJob(jobId), 2600);
-  } catch (error) {
-    setDebug({
-      jobId,
-      status: "polling",
-      confidence: "-",
-      message: error.message || "轮询暂时失败，继续重试",
-    });
-    pollTimer = window.setTimeout(() => pollJob(jobId), 3000);
-  }
-}
-
-async function submitQuestion(question) {
-  window.clearTimeout(pollTimer);
-  currentJobId = null;
-  setInputDisabled(true);
-  addQuestionCard(question);
-  updateProductStatus("pending");
-
-  try {
-    const data = await createJob(question);
-    currentJobId = data.job_id;
-    updateProductStatus(data.status || "pending", data);
-    pollJob(currentJobId);
-  } catch (error) {
-    currentJobId = null;
+    renderAdvisorResponse(data);
     setInputDisabled(false);
-    updateProductStatus("failed", {
-      error: error.message || "创建任务失败",
-    });
+
+  } catch (error) {
+    setInputDisabled(false);
+    setAnswer(`处理遇到了问题：${esc(error.message)}`, "failed");
+    setDebug({ status: "error", message: error.message });
   }
 }
 

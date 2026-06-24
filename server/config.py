@@ -50,6 +50,10 @@ class Settings:
     local_claude_worker_enabled: bool
     local_worker_token: str
     local_agent_job_timeout_seconds: int
+    local_claude_as_advisor_engine: bool
+    local_claude_engine_timeout_seconds: int
+    local_claude_engine_poll_interval_seconds: int
+    local_claude_engine_fallback_to_deepseek: bool
 
     @property
     def llm_mock_mode(self) -> bool:
@@ -137,6 +141,10 @@ def get_settings() -> Settings:
         local_claude_worker_enabled=os.getenv("LOCAL_CLAUDE_WORKER_ENABLED", "false").strip().lower() in {"1", "true", "yes"},
         local_worker_token=os.getenv("LOCAL_WORKER_TOKEN", ""),
         local_agent_job_timeout_seconds=int(os.getenv("LOCAL_AGENT_JOB_TIMEOUT_SECONDS", "900") or "900"),
+        local_claude_as_advisor_engine=os.getenv("LOCAL_CLAUDE_AS_ADVISOR_ENGINE", "false").strip().lower() in {"1", "true", "yes"},
+        local_claude_engine_timeout_seconds=int(os.getenv("LOCAL_CLAUDE_ENGINE_TIMEOUT_SECONDS", "120") or "120"),
+        local_claude_engine_poll_interval_seconds=int(os.getenv("LOCAL_CLAUDE_ENGINE_POLL_INTERVAL_SECONDS", "2") or "2"),
+        local_claude_engine_fallback_to_deepseek=os.getenv("LOCAL_CLAUDE_ENGINE_FALLBACK_TO_DEEPSEEK", "true").strip().lower() in {"1", "true", "yes"},
     )
 
 
