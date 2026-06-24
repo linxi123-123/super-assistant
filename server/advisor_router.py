@@ -417,6 +417,15 @@ async def handle_chat(request: AdvisorChatRequest) -> AdvisorChatResponse:
     candidates = []
     if memory_policy.get("can_generate_candidate"):
         candidates = generate_candidate_memory(turn_info.get("turn_id", ""), normalized_message, turn_info.get("memory_summary", ""), user_id, tenant_id)
+
+    # ── LLM Wiki Gardener: auto-maintain personal knowledge wiki ──
+    gardener_actions = []
+    try:
+        from server.services.llm_wiki_gardener_service import garden_conversation
+        gardener_actions = garden_conversation(normalized_message, answer)
+    except Exception:
+        pass  # Gardener is supplementary, never blocks the main flow
+
     decision_layer_output = build_decision_layer_output(
         question=normalized_message,
         task_type=task_type,
