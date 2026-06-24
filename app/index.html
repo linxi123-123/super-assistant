@@ -1,70 +1,59 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Super Assistant · 个人外脑</title>
-  <link rel="stylesheet" href="./styles.css?v=20260625a" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Super Assistant · 个人外脑</title>
+<link rel="stylesheet" href="./styles.css?v=20260625b" />
 </head>
 <body>
 
-  <!-- Overlay for sidebar -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app">
 
-  <!-- Left sidebar (collapsible) -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-head">
-      <div class="sidebar-logo">谋</div>
-      <div>
-        <strong>Super Assistant</strong>
-        <small>个人外脑</small>
-      </div>
-    </div>
-    <nav class="sidebar-nav">
-      <a class="nav-item active" data-page="chat">💬 对话</a>
-      <a class="nav-item" data-page="history">📋 历史</a>
-      <a class="nav-item" data-page="memory">🧠 记忆</a>
-      <a class="nav-item" data-page="settings">⚙ 设置</a>
+  <!-- LEFT SIDEBAR: capability entries -->
+  <aside class="side-left" id="sideLeft">
+    <div class="side-brand">谋</div>
+    <nav class="side-nav">
+      <a class="side-item active" data-panel="brain"><span class="side-icon">◉</span>外脑</a>
+      <a class="side-item" data-panel="memory"><span class="side-icon">◫</span>记忆</a>
+      <a class="side-item" data-panel="tools"><span class="side-icon">⚙</span>工具</a>
+      <a class="side-item" data-panel="projects"><span class="side-icon">⊞</span>项目</a>
+      <a class="side-item" data-panel="analysis"><span class="side-icon">◎</span>分析</a>
     </nav>
-    <div class="sidebar-footer">
-      <small>Claude Code 外脑已就绪</small>
+    <div class="side-foot">
+      <small>Claude Code 外脑</small>
     </div>
   </aside>
 
-  <!-- Main app -->
-  <div class="app-main">
+  <!-- CENTER: brain visual + conversation -->
+  <main class="main-center" id="mainCenter">
 
-    <!-- Header -->
-    <header class="app-header">
-      <button class="menu-btn" id="menuBtn" aria-label="菜单">
-        <span></span><span></span><span></span>
-      </button>
-      <h1 class="header-title">Super Assistant</h1>
-      <span class="header-status" id="headerStatus">就绪</span>
-    </header>
-
-    <!-- Chat area -->
-    <div class="chat-area" id="chatArea">
-
-      <!-- Welcome state -->
-      <div class="welcome" id="welcome">
-        <div class="welcome-icon">
-          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#6366f1" stroke-width="1.5" opacity="0.25"/><circle cx="32" cy="32" r="14" stroke="#6366f1" stroke-width="1" opacity="0.4"/><circle cx="32" cy="32" r="4" fill="#6366f1" opacity="0.6"/></svg>
-        </div>
-        <p class="welcome-greeting">今天想让我帮你处理什么？</p>
-        <p class="welcome-sub">我可以帮你深度分析、项目规划、决策推演、记忆检索</p>
+    <!-- Brain visual (default state) -->
+    <div class="brain-stage" id="brainStage">
+      <div class="brain-core">
+        <div class="brain-ring r1"></div>
+        <div class="brain-ring r2"></div>
+        <div class="brain-ring r3"></div>
+        <div class="brain-dot"></div>
+        <div class="brain-particle p1"></div>
+        <div class="brain-particle p2"></div>
+        <div class="brain-particle p3"></div>
+        <div class="brain-particle p4"></div>
+        <div class="brain-particle p5"></div>
+        <div class="brain-particle p6"></div>
       </div>
-
-      <!-- Messages rendered here -->
-      <div class="messages" id="messages"></div>
-
+      <h2 class="brain-title">我在，今天想让我帮你处理什么？</h2>
+      <p class="brain-sub">记忆、工具和上下文已就位。你可以直接说问题，我会帮你拆开、判断和推进。</p>
     </div>
 
-    <!-- Input bar (fixed bottom) -->
+    <!-- Conversation area -->
+    <div class="conv-area" id="convArea"></div>
+
+    <!-- Input bar -->
     <div class="input-bar">
       <form class="input-form" id="chatForm">
         <textarea id="chatInput" rows="1"
-          placeholder="输入你想分析、规划或处理的问题…"
+          placeholder="输入你想让我分析、规划或处理的问题……"
           required></textarea>
         <button type="submit" id="sendBtn" aria-label="发送">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
@@ -72,8 +61,37 @@
       </form>
     </div>
 
-  </div>
+  </main>
 
-  <script src="./app.js?v=20260625a"></script>
+  <!-- RIGHT PANEL: lightweight status -->
+  <aside class="side-right" id="sideRight">
+    <div class="status-card">
+      <div class="status-label">外脑状态</div>
+      <div class="status-val online" id="brainStatus">在线</div>
+    </div>
+    <div class="status-card">
+      <div class="status-label">记忆连接</div>
+      <div class="status-val" id="memoryStatus">已连接</div>
+    </div>
+    <div class="status-card">
+      <div class="status-label">工具状态</div>
+      <div class="status-val" id="toolStatus">待命</div>
+    </div>
+    <div class="status-card">
+      <div class="status-label">当前上下文</div>
+      <div class="status-val dim" id="ctxStatus">可续接</div>
+    </div>
+    <div class="status-card" id="currentTaskCard" hidden>
+      <div class="status-label">当前处理</div>
+      <div class="status-val active" id="currentTaskText">—</div>
+    </div>
+    <!-- Debug toggle -->
+    <div class="debug-toggle" id="debugToggle" hidden onclick="this.nextElementSibling.classList.toggle('open')">运行详情 ▾</div>
+    <div class="debug-info" id="debugInfo"></div>
+  </aside>
+
+</div>
+
+<script src="./app.js?v=20260625b"></script>
 </body>
 </html>
