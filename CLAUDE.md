@@ -77,6 +77,32 @@ server/services/project_service.py - 项目问答
 server/database.py - SQLite表结构
 ```
 
+## 用户身份系统
+
+- 名字登录（输入名字即可开始使用，无密码）
+- user_id = 用户输入的名字（同一名字 = 同一账户 = 跨设备同步记忆）
+- 所有数据表带 `user_id` + `tenant_id` 隔离
+- 新用户 profile 为空（`data/user_profiles/{user_id}.json`），不会继承其他人的数据
+- 新用户首次进入有引导流程：自我介绍 → 问身份/兴趣
+- 老用户再进入：根据历史对话发个性化问候
+- 点击顶部名字可以切换用户
+
+## 已实现的能力
+
+```
+"脑子" ✅  意图路由/记忆召回/用户画像/理性判断/反迎合/自适应模式
+"眼睛" ✅  天气+预报+空气/新浪A股港股美股/论文搜索/行业研究/Tavily搜索
+"手"   ❌  还不能发邮件/建日程/写文档（待开发）
+
+数据系统：
+- 长期记忆（conversation_turns → candidate_memories → confirmed_memories）
+- 记忆治理（确认/删除/禁用/过期/审计）
+- 用户画像事实（profile_facts：目标/项目/偏好/风险模式）
+- 每日简报（/api/daily-briefing：昨日复盘+今日焦点+明日建议）
+- 机会雷达（radar_rules → radar_runs → touchpoints → outcomes）
+- 管理员面板（/admin.html：查看所有用户对话）
+```
+
 ## 服务器部署
 
 - 服务器：阿里云 8.163.35.221
@@ -85,3 +111,4 @@ server/database.py - SQLite表结构
 - nginx：/etc/nginx/sites-available/super-assistant (80→8000)
 - 前端：http://8.163.35.221
 - 管理：http://8.163.35.221/admin.html
+- 部署更新：上传 tar.gz → 解压 → systemctl restart
