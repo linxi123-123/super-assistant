@@ -1,0 +1,35 @@
+﻿cd /opt/super-assistant
+cat > .env << 'ENVEOF'
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4.1-mini
+LLM_MODE=mock
+SELECTED_LLM_PROVIDER=deepseek
+DEEPSEEK_API_KEY=
+DEEPSEEK_MODEL=deepseek-chat
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+KIMI_API_KEY=
+KIMI_MODEL=moonshot-v1-8k
+KIMI_BASE_URL=https://api.moonshot.ai/v1
+ADVISOR_MASTER_KEY=
+WEATHER_PROVIDER=openweather
+OPENWEATHER_API_KEY=
+OPENWEATHER_BASE_URL=https://api.openweathermap.org
+OPENMETEO_BASE_URL=https://api.open-meteo.com
+SEARCH_PROVIDER=tavily
+TAVILY_API_KEY=
+TAVILY_BASE_URL=https://api.tavily.com
+NEWS_PROVIDER=search
+MARKET_DATA_PROVIDER=finnhub
+FINNHUB_API_KEY=
+FINNHUB_BASE_URL=https://finnhub.io/api/v1
+NEWS_API_KEY=
+MEMORY_ENABLED=true
+MEMORY_RECENT_LIMIT=5
+MEMORY_ALLOW_LLM_CONTEXT=true
+APP_ENV=local
+LOCAL_CLAUDE_WORKER_ENABLED=true
+LOCAL_WORKER_TOKEN=d3a5e4f1069b9efe28aca14e90b7cb5e7e447fe6f3b895481f9f62b9c40d8e64
+LOCAL_AGENT_JOB_TIMEOUT_SECONDS=900
+ENVEOF
+echo ".env written"
+cat .env | grep -c LOCAL_WORKER_TOKEN

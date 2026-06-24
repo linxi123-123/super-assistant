@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 160" role="img" aria-label="Assistant companion">
+  <defs>
+    <radialGradient id="fur" cx="50%" cy="48%" r="58%">
+      <stop offset="0" stop-color="#5b3340"/>
+      <stop offset=".42" stop-color="#261821"/>
+      <stop offset=".78" stop-color="#0f0d14"/>
+      <stop offset="1" stop-color="#04050a"/>
+    </radialGradient>
+    <radialGradient id="compEye" cx="42%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".2" stop-color="#91e4ff"/>
+      <stop offset=".48" stop-color="#1964ff"/>
+      <stop offset=".85" stop-color="#071354"/>
+      <stop offset="1" stop-color="#02040d"/>
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".45"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#2b67ff" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M34 92 C30 58 53 29 89 24 C125 15 161 31 175 64 C190 94 177 128 145 142 C113 156 70 151 48 127 C40 117 35 105 34 92Z" fill="url(#fur)"/>
+    <path d="M44 76 L25 54 L57 61 L69 34 L82 58 L108 26 L112 61 L147 38 L139 70 L180 65 L149 86 L178 112 L140 108 L145 143 L116 123 L96 153 L86 119 L48 142 L61 108 L25 112Z" fill="url(#fur)" opacity=".92"/>
+    <circle cx="82" cy="85" r="20" fill="url(#compEye)"/>
+    <circle cx="128" cy="85" r="20" fill="url(#compEye)"/>
+    <circle cx="75" cy="77" r="5" fill="#fff"/>
+    <circle cx="121" cy="77" r="5" fill="#fff"/>
+    <path d="M91 116 C101 123 113 123 123 116" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

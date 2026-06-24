@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Assistant avatar">
+  <defs>
+    <radialGradient id="face" cx="50%" cy="45%" r="58%">
+      <stop offset="0" stop-color="#151727"/>
+      <stop offset=".74" stop-color="#070812"/>
+      <stop offset="1" stop-color="#02030a"/>
+    </radialGradient>
+    <radialGradient id="eye" cx="42%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".18" stop-color="#83d7ff"/>
+      <stop offset=".45" stop-color="#155cff"/>
+      <stop offset=".82" stop-color="#09134c"/>
+      <stop offset="1" stop-color="#030612"/>
+    </radialGradient>
+    <filter id="blueGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="0 0 1 0 0 0 .6 1 0 0 0 0 1 0 1 0 0 0 .85 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="80" cy="80" r="70" fill="url(#face)" stroke="#ffffff" stroke-opacity=".22" stroke-width="2"/>
+  <circle cx="80" cy="80" r="68" fill="none" stroke="#ff5f86" stroke-opacity=".09" stroke-width="5"/>
+  <g filter="url(#blueGlow)">
+    <circle cx="58" cy="72" r="15" fill="url(#eye)"/>
+    <circle cx="102" cy="72" r="15" fill="url(#eye)"/>
+    <circle cx="54" cy="67" r="4" fill="#fff"/>
+    <circle cx="98" cy="67" r="4" fill="#fff"/>
+  </g>
+  <path d="M50 105 C67 116 93 116 110 105" fill="none" stroke="#ffffff" stroke-opacity=".08" stroke-width="3" stroke-linecap="round"/>
+</svg>

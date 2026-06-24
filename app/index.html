@@ -2,96 +2,122 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Super Assistant · 个人外脑</title>
-<link rel="stylesheet" href="./styles.css?v=20260625b" />
+<link rel="stylesheet" href="./styles.css?v=20260625c" />
 </head>
 <body>
-
-<div class="app">
-
-  <!-- LEFT SIDEBAR: capability entries -->
-  <aside class="side-left" id="sideLeft">
-    <div class="side-brand">谋</div>
-    <nav class="side-nav">
-      <a class="side-item active" data-panel="brain"><span class="side-icon">◉</span>外脑</a>
-      <a class="side-item" data-panel="memory"><span class="side-icon">◫</span>记忆</a>
-      <a class="side-item" data-panel="tools"><span class="side-icon">⚙</span>工具</a>
-      <a class="side-item" data-panel="projects"><span class="side-icon">⊞</span>项目</a>
-      <a class="side-item" data-panel="analysis"><span class="side-icon">◎</span>分析</a>
+<div class="mobile-shell">
+  <aside class="side-rail" id="sideRail" aria-label="功能入口">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="展开功能栏" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="rail-nav" aria-label="Super Assistant 功能">
+      <button class="rail-item active" type="button" data-feature="记忆" title="记忆">
+        <span class="rail-icon brain-icon" aria-hidden="true"></span><span class="rail-label">记忆</span>
+      </button>
+      <button class="rail-item" type="button" data-feature="工具" title="工具">
+        <span class="rail-icon tool-icon" aria-hidden="true"></span><span class="rail-label">工具</span>
+      </button>
+      <button class="rail-item" type="button" data-feature="创作" title="创作">
+        <span class="rail-icon write-icon" aria-hidden="true"></span><span class="rail-label">创作</span>
+      </button>
+      <button class="rail-item" type="button" data-feature="项目" title="项目">
+        <span class="rail-icon project-icon" aria-hidden="true"></span><span class="rail-label">项目</span>
+      </button>
+      <button class="rail-item" type="button" data-feature="分析" title="分析">
+        <span class="rail-icon chart-icon" aria-hidden="true"></span><span class="rail-label">分析</span>
+      </button>
+      <button class="rail-item" type="button" data-feature="自动化" title="自动化">
+        <span class="rail-icon bolt-icon" aria-hidden="true"></span><span class="rail-label">自动化</span>
+      </button>
+      <button class="rail-item" type="button" data-feature="设置" title="设置">
+        <span class="rail-icon spark-icon" aria-hidden="true"></span><span class="rail-label">设置</span>
+      </button>
     </nav>
-    <div class="side-foot">
-      <small>Claude Code 外脑</small>
-    </div>
   </aside>
 
-  <!-- CENTER: brain visual + conversation -->
-  <main class="main-center" id="mainCenter">
+  <div class="sidebar-scrim" id="sidebarScrim" hidden></div>
 
-    <!-- Brain visual (default state) -->
-    <div class="brain-stage" id="brainStage">
-      <div class="brain-core">
-        <div class="brain-ring r1"></div>
-        <div class="brain-ring r2"></div>
-        <div class="brain-ring r3"></div>
-        <div class="brain-dot"></div>
-        <div class="brain-particle p1"></div>
-        <div class="brain-particle p2"></div>
-        <div class="brain-particle p3"></div>
-        <div class="brain-particle p4"></div>
-        <div class="brain-particle p5"></div>
-        <div class="brain-particle p6"></div>
+  <main class="home-screen" id="homeScreen">
+    <header class="identity-area">
+      <div class="brand-line">
+        <div class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <h1>外脑 <span>Super Assistant</span></h1>
+        <span class="pro-badge">Pro</span>
       </div>
-      <h2 class="brain-title">我在，今天想让我帮你处理什么？</h2>
-      <p class="brain-sub">记忆、工具和上下文已就位。你可以直接说问题，我会帮你拆开、判断和推进。</p>
-    </div>
+      <p>我在，今天想让我帮你处理什么？</p>
+      <div class="online-pill" aria-label="在线状态">
+        <img src="./assets/assistant-avatar.svg" alt="" />
+        <span></span>在线
+      </div>
+    </header>
 
-    <!-- Conversation area -->
-    <div class="conv-area" id="convArea"></div>
+    <section class="brain-hero" aria-label="外脑核心">
+      <div class="orb-wrap">
+        <div class="memory-orb" aria-hidden="true">
+          <img src="./assets/brain-core.svg" alt="" />
+        </div>
+        <div class="orb-ring" aria-hidden="true"></div>
+      </div>
+      <div class="status-grid" aria-label="外脑状态">
+        <article class="mini-card">
+          <span class="status-dot green"></span>
+          <strong>记忆在线</strong>
+          <small>已连接你的长期上下文</small>
+        </article>
+        <article class="mini-card">
+          <span class="status-dot blue"></span>
+          <strong>上下文已连接</strong>
+          <small>正在理解当前任务</small>
+        </article>
+        <article class="mini-card compact">
+          <span class="status-dot violet"></span>
+          <strong>随时响应</strong>
+          <small>专注为你服务</small>
+        </article>
+      </div>
+      <div class="core-command" aria-hidden="true">
+        <span class="voice-orb"><i></i></span>
+        <span class="command-text">点击说话，或长按输入</span>
+        <span class="wave-mark"><i></i><i></i><i></i></span>
+        <img class="mini-companion" src="./assets/mini-companion.svg" alt="" />
+      </div>
+    </section>
 
-    <!-- Input bar -->
-    <div class="input-bar">
-      <form class="input-form" id="chatForm">
-        <textarea id="chatInput" rows="1"
-          placeholder="输入你想让我分析、规划或处理的问题……"
-          required></textarea>
-        <button type="submit" id="sendBtn" aria-label="发送">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-        </button>
-      </form>
-    </div>
-
+    <section class="answer-stack" id="answerStack" aria-live="polite">
+      <article class="answer-card" id="answerCard">
+        <div class="answer-meta"><span class="answer-sigil" aria-hidden="true"></span>外脑 · 刚刚</div>
+        <div class="answer-copy" id="answerCopy">
+          我已上线，记忆与上下文连接完成。<br>
+          你可以直接把问题交给我，我会帮你整理思路、分析信息或推进下一步。
+        </div>
+        <details class="run-details" id="runDetails">
+          <summary>运行详情</summary>
+          <dl>
+            <div><dt>job_id</dt><dd id="debugJobId">-</dd></div>
+            <div><dt>status</dt><dd id="debugStatus">ready</dd></div>
+            <div><dt>confidence</dt><dd id="debugConfidence">-</dd></div>
+            <div><dt>debug message</dt><dd id="debugMessage">等待输入</dd></div>
+          </dl>
+        </details>
+      </article>
+    </section>
   </main>
 
-  <!-- RIGHT PANEL: lightweight status -->
-  <aside class="side-right" id="sideRight">
-    <div class="status-card">
-      <div class="status-label">外脑状态</div>
-      <div class="status-val online" id="brainStatus">在线</div>
-    </div>
-    <div class="status-card">
-      <div class="status-label">记忆连接</div>
-      <div class="status-val" id="memoryStatus">已连接</div>
-    </div>
-    <div class="status-card">
-      <div class="status-label">工具状态</div>
-      <div class="status-val" id="toolStatus">待命</div>
-    </div>
-    <div class="status-card">
-      <div class="status-label">当前上下文</div>
-      <div class="status-val dim" id="ctxStatus">可续接</div>
-    </div>
-    <div class="status-card" id="currentTaskCard" hidden>
-      <div class="status-label">当前处理</div>
-      <div class="status-val active" id="currentTaskText">—</div>
-    </div>
-    <!-- Debug toggle -->
-    <div class="debug-toggle" id="debugToggle" hidden onclick="this.nextElementSibling.classList.toggle('open')">运行详情 ▾</div>
-    <div class="debug-info" id="debugInfo"></div>
-  </aside>
-
+  <form class="dock-input" id="chatForm">
+    <button class="voice-button" type="button" aria-label="语音输入">
+      <span></span>
+    </button>
+    <textarea id="chatInput" rows="1" placeholder="输入你想让我分析、规划或处理的问题……" required></textarea>
+    <button class="send-button" id="sendBtn" type="submit" aria-label="发送">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m0 0-7 7m7-7 7 7"/></svg>
+    </button>
+  </form>
 </div>
 
-<script src="./app.js?v=20260625b"></script>
+<script src="./app.js?v=20260625c"></script>
 </body>
 </html>

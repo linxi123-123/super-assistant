@@ -269,6 +269,45 @@ def build_claude_args(base_command: str, prompt: str) -> list[str]:
     return shlex.split(base, posix=False) + claude_args
 
 
+def _do_public_research(question: str, job_id: str) -> str:
+    """Call server-side public research API and return formatted results."""
+    try:
+        url = f"{SUPER_ASSISTANT_SERVER.rstrip('/')}/api/public-research/search"
+        resp = requests.post(
+            url,
+            json={"query": question, "max_results": 5},
+            headers=api_headers(),
+            timeout=30,
+        )
+        if resp.status_code != 200:
+            log(f"JOB {job_id}: Public research API returned {resp.status_code}")
+            return ""
+        data = resp.json()
+        if data.get("status") == "disabled":
+            log(f"JOB {job_id}: Public research disabled (no API key configured)")
+            return ""
+        results = data.get("results", [])
+        if not results:
+            log(f"JOB {job_id}: Public research returned 0 results")
+            return ""
+
+        lines = [f"共检索到 {len(results)} 条公开资料：\n"]
+        for i, r in enumerate(results, 1):
+            lines.append(f"{i}. **{r.get('title', '无标题')}**")
+            if r.get("snippet"):
+                lines.append(f"   摘要: {r.get('snippet')}")
+            if r.get("url"):
+                lines.append(f"   链接: {r.get('url')}")
+            lines.append(f"   来源: {r.get('source', 'Tavily')}")
+            lines.append("")
+
+        log(f"JOB {job_id}: Public research returned {len(results)} results")
+        return "\n".join(lines)
+    except Exception as exc:
+        log(f"JOB {job_id}: Public research failed: {safe_error(exc)}")
+        return ""
+
+
 def run_claude(job: dict) -> dict:
     """Run Claude Code for a job and return parsed result JSON.
 
@@ -279,8 +318,17 @@ def run_claude(job: dict) -> dict:
     task_type = job.get("task_type", "deep_reasoning")
     job_id = job.get("job_id", "unknown")
 
+    # If public research is enabled, fetch results from server before calling Claude
+    public_research_results = ""
+    if context.get("allow_public_research"):
+        public_research_results = _do_public_research(question, job_id)
+
     context_json = json.dumps(context, ensure_ascii=False, indent=2)
     prompt = CLAUDE_PROMPT_TEMPLATE.format(question=question, context_json=context_json)
+
+    # Append public research results to the prompt
+    if public_research_results:
+        prompt += "\n\n## 公开资料检索结果\n\n以下是服务器端通过 Tavily 搜索获取的公开资料，请综合这些结果进行回答：\n\n" + public_research_results
 
     # Work out the working directory
     cwd = LLM_WIKI_ROOT if LLM_WIKI_ROOT and os.path.isdir(LLM_WIKI_ROOT) else os.getcwd()
