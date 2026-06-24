@@ -149,6 +149,16 @@ async def handle_chat(request: AdvisorChatRequest) -> AdvisorChatResponse:
     if frontend_history:
         recent_memory_context = list(frontend_history) + list(recent_memory_context or [])
     profile_facts = get_profile_facts_for_advice(user_id, tenant_id)
+
+    # ── LLM Wiki memory enhancement (supplementary, never blocks flow) ──
+    try:
+        from server.services.llm_wiki_service import build_llm_wiki_summary
+        wiki_summary = build_llm_wiki_summary(normalized_message, user_id)
+        if wiki_summary:
+            recent_memory_context = [{"role": "llm_wiki", "content": wiki_summary}] + list(recent_memory_context or [])
+    except Exception:
+        pass
+
     from server.database import get_connection
     with get_connection() as conn:
         conv_count = conn.execute("SELECT COUNT(*) FROM conversation_turns WHERE user_id = ?", (user_id,)).fetchone()[0]

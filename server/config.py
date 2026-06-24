@@ -54,6 +54,7 @@ class Settings:
     local_claude_engine_timeout_seconds: int
     local_claude_engine_poll_interval_seconds: int
     local_claude_engine_fallback_to_deepseek: bool
+    llm_wiki_root: str
 
     @property
     def llm_mock_mode(self) -> bool:
@@ -145,6 +146,7 @@ def get_settings() -> Settings:
         local_claude_engine_timeout_seconds=int(os.getenv("LOCAL_CLAUDE_ENGINE_TIMEOUT_SECONDS", "120") or "120"),
         local_claude_engine_poll_interval_seconds=int(os.getenv("LOCAL_CLAUDE_ENGINE_POLL_INTERVAL_SECONDS", "2") or "2"),
         local_claude_engine_fallback_to_deepseek=os.getenv("LOCAL_CLAUDE_ENGINE_FALLBACK_TO_DEEPSEEK", "true").strip().lower() in {"1", "true", "yes"},
+        llm_wiki_root=os.getenv("LLM_WIKI_ROOT", ""),
     )
 
 
