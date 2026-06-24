@@ -30,6 +30,13 @@ from datetime import datetime, timezone
 import requests
 from dotenv import load_dotenv
 
+# Fix Windows console encoding for emoji/Unicode output
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 # ── Config ──────────────────────────────────────────────────
 
 load_dotenv(".env.worker")
@@ -54,7 +61,11 @@ LOG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "worker_logs"
 def log(msg: str) -> None:
     ts = datetime.now(timezone.utc).isoformat()
     line = f"[{ts}] {msg}"
-    print(line, flush=True)
+    # Print safely — replace chars that the console can't encode
+    try:
+        print(line, flush=True)
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        print(line.encode("ascii", errors="replace").decode("ascii"), flush=True)
 
     try:
         os.makedirs(LOG_DIR, exist_ok=True)
