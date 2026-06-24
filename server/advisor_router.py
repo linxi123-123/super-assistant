@@ -533,6 +533,21 @@ def _score_local_memory_answer(answer: str, memory_count: int) -> dict[str, Any]
 
 
 def _contract_response(**payload: Any) -> AdvisorChatResponse:
+    # ── Response sanitization: strip schema fields, clean output ──
+    try:
+        from server.services.response_sanitizer import sanitize_answer
+        raw_answer = payload.get("answer", "")
+        payload["answer"] = sanitize_answer(raw_answer)
+    except Exception:
+        pass
+
+    # ── Personal memory source guard: block git/config/docs as identity ──
+    try:
+        from server.services.personal_memory_source_guard import guard_answer
+        payload["answer"] = guard_answer(payload.get("answer", ""))
+    except Exception:
+        pass
+
     payload["actions"] = payload.get("actions") or payload.get("decision_layer_output", {}).get("actions") or []
     contract = validate_response_contract(payload)
     daily_loop = build_daily_advisor_loop(payload, contract)
