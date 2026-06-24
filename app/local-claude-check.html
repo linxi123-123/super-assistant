@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Claude Worker 验证</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Microsoft YaHei', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; padding: 2rem; }
+  .container { max-width: 780px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #f8fafc; }
+  .subtitle { color: #94a3b8; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem; }
+  textarea { width: 100%; min-height: 100px; background: #0f172a; border: 1px solid #475569; color: #e2e8f0; padding: 0.75rem; border-radius: 6px; font-size: 0.95rem; resize: vertical; font-family: inherit; }
+  button { background: #3b82f6; color: #fff; border: none; padding: 0.7rem 1.8rem; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 0.75rem; transition: background .15s; }
+  button:hover { background: #2563eb; }
+  button:disabled { background: #475569; cursor: not-allowed; }
+  .status-pending { color: #fbbf24; }
+  .status-claimed { color: #60a5fa; }
+  .status-succeeded { color: #34d399; }
+  .status-failed { color: #f87171; }
+  .status-running { color: #a78bfa; }
+  .result-box { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 1rem; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; max-height: 400px; overflow-y: auto; }
+  .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+  .badge-ok { background: #065f46; color: #34d399; }
+  .badge-err { background: #7f1d1d; color: #f87171; }
+  .badge-info { background: #1e3a5f; color: #60a5fa; }
+  .section-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+  .hidden { display: none; }
+  .pass-banner { background: #065f46; border: 2px solid #34d399; color: #d1fae5; padding: 1.2rem; border-radius: 10px; text-align: center; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+  .error-banner { background: #7f1d1d; border: 2px solid #f87171; color: #fecaca; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; }
+  .log-line { font-size: 0.8rem; color: #94a3b8; padding: 0.15rem 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🖥️ Local Claude Worker 验证</h1>
+  <p class="subtitle">本机 Claude Code → 远程服务器 → 网页展示</p>
+
+  <div id="passBanner" class="pass-banner hidden">✅ Local Claude Worker 已跑通</div>
+  <div id="errorBanner" class="error-banner hidden"></div>
+
+  <div class="card">
+    <div class="section-label">📝 提问</div>
+    <textarea id="question">帮我测试远程服务器到本机 Claude Worker 是否接通，并简单说明你看到了什么。用JSON格式回答。</textarea>
+    <button id="btnCreate" onclick="createJob()">创建 Claude Worker 任务</button>
+    <div id="createInfo" style="margin-top:0.5rem;font-size:0.85rem;"></div>
+  </div>
+
+  <div class="card" id="statusCard">
+    <div class="section-label">📊 状态</div>
+    <div id="logArea"></div>
+    <div id="resultArea"></div>
+  </div>
+</div>
+
+<script>
+const SERVER = '';
+let pollTimer = null;
+
+function log(msg) {
+  const area = document.getElementById('logArea');
+  area.innerHTML += `<div class="log-line">[${new Date().toLocaleTimeString()}] ${msg}</div>`;
+}
+
+async function createJob() {
+  const btn = document.getElementById('btnCreate');
+  const question = document.getElementById('question').value.trim();
+  if (!question) return;
+
+  btn.disabled = true;
+  document.getElementById('passBanner').classList.add('hidden');
+  document.getElementById('errorBanner').classList.add('hidden');
+  document.getElementById('resultArea').innerHTML = '';
+  document.getElementById('logArea').innerHTML = '';
+  document.getElementById('createInfo').innerHTML = '';
+
+  log('创建任务...');
+  try {
+    const resp = await fetch(SERVER + '/api/local-agent/jobs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user_id: 'default_user', task_type: 'deep_reasoning', question: question, context: { source: 'web_verify' } })
+    });
+    const data = await resp.json();
+    if (!data.job_id) { log('❌ 创建失败: ' + JSON.stringify(data)); btn.disabled = false; return; }
+
+    document.getElementById('createInfo').innerHTML = `Job ID: <code>${data.job_id}</code> — 等待本机 Worker 处理...`;
+    log('✅ 任务已创建: ' + data.job_id);
+    log('⏳ 轮询中...');
+    pollJob(data.job_id);
+  } catch(e) {
+    log('❌ 请求失败: ' + e.message);
+    btn.disabled = false;
+  }
+}
+
+async function pollJob(jobId) {
+  if (pollTimer) clearTimeout(pollTimer);
+
+  try {
+    const resp = await fetch(SERVER + '/api/local-agent/jobs/' + jobId);
+    const data = await resp.json();
+    const status = data.status;
+
+    if (status === 'pending') {
+      log('⏳ pending — 等待 Worker 拉取...');
+      pollTimer = setTimeout(() => pollJob(jobId), 2000);
+    } else if (status === 'claimed') {
+      log('🔄 claimed — Worker 已拉取，Claude 推理中...');
+      pollTimer = setTimeout(() => pollJob(jobId), 3000);
+    } else if (status === 'succeeded') {
+      log('✅ succeeded — 推理完成！');
+      showResult(data, true);
+      document.getElementById('btnCreate').disabled = false;
+    } else if (status === 'failed') {
+      log('❌ failed — ' + (data.error || '未知错误'));
+      showResult(data, false);
+      document.getElementById('btnCreate').disabled = false;
+    } else {
+      log('🔄 ' + status + ' — 继续轮询...');
+      pollTimer = setTimeout(() => pollJob(jobId), 3000);
+    }
+  } catch(e) {
+    log('⚠️ 轮询异常: ' + e.message + '，2秒后重试...');
+    pollTimer = setTimeout(() => pollJob(jobId), 3000);
+  }
+}
+
+function showResult(data, success) {
+  const area = document.getElementById('resultArea');
+  const r = data.result || {};
+  let html = '';
+
+  if (success) {
+    document.getElementById('passBanner').classList.remove('hidden');
+  } else {
+    const banner = document.getElementById('errorBanner');
+    banner.textContent = '❌ 任务失败: ' + (data.error || '未知错误');
+    banner.classList.remove('hidden');
+  }
+
+  html += `<div style="margin-top:1rem;"><span class="badge ${success ? 'badge-ok' : 'badge-err'}">${data.status}</span> <span class="badge badge-info">${data.job_id}</span></div>`;
+
+  if (r.answer) {
+    html += `<div class="section-label" style="margin-top:1rem;">💬 回答</div>`;
+    html += `<div class="result-box">${escapeHtml(r.answer)}</div>`;
+  }
+  if (r.summary) {
+    html += `<div class="section-label" style="margin-top:0.8rem;">📋 摘要</div>`;
+    html += `<div class="result-box">${escapeHtml(r.summary)}</div>`;
+  }
+  if (r.next_actions && r.next_actions.length) {
+    html += `<div class="section-label" style="margin-top:0.8rem;">➡️ 下一步建议</div>`;
+    html += '<ul style="padding-left:1.5rem;">';
+    r.next_actions.forEach(a => { html += `<li>${escapeHtml(a)}</li>`; });
+    html += '</ul>';
+  }
+  if (r.memory_updates && r.memory_updates.length) {
+    html += `<div class="section-label" style="margin-top:0.8rem;">🧠 建议写入记忆</div>`;
+    r.memory_updates.forEach(m => {
+      html += `<div class="result-box" style="margin-bottom:0.5rem;">`;
+      html += `<strong>目标:</strong> ${escapeHtml(m.target)}<br>`;
+      html += `<strong>内容:</strong> ${escapeHtml(m.content)}<br>`;
+      html += `<strong>原因:</strong> ${escapeHtml(m.reason)}`;
+      html += `</div>`;
+    });
+  }
+  if (r.confidence) {
+    html += `<div class="section-label" style="margin-top:0.8rem;">🎯 置信度: ${escapeHtml(r.confidence)}</div>`;
+  }
+  if (r.warnings && r.warnings.length) {
+    html += `<div class="section-label" style="margin-top:0.8rem;">⚠️ 警告</div>`;
+    html += '<ul style="padding-left:1.5rem;">';
+    r.warnings.forEach(w => { html += `<li>${escapeHtml(w)}</li>`; });
+    html += '</ul>';
+  }
+
+  area.innerHTML = html;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>
