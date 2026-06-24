@@ -1,0 +1,2404 @@
+[
+  {
+    "beforeFeedback": {
+      "index": 1,
+      "group": "original",
+      "name": "原始 1",
+      "input": {
+        "group": "original",
+        "name": "原始 1",
+        "type": "action",
+        "text": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。"
+      },
+      "event": {
+        "id": "evt_1780917987484_cdb9c0fd6841c8",
+        "type": "action",
+        "content": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:27.484Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917987484_ad6dfe018a08",
+          "type": "行为记忆",
+          "content": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "sourceEventId": "evt_1780917987484_cdb9c0fd6841c8",
+          "evidence": "来自 行为事件：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:27.484Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917987484_b99ea3b3f2928",
+          "sourceEventId": "evt_1780917987484_cdb9c0fd6841c8",
+          "type": "progress",
+          "subtype": "milestone",
+          "description": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "evidence": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:27.484Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917987485_29034e1de41778",
+          "signalId": "sig_1780917987484_b99ea3b3f2928",
+          "message": "我为什么提醒你：你已经完成一个阶段成果，下一步应该验收质量，而不是把完成感误认为能力达标。\n我观察到：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。\n反方判断：结构补齐不等于军师真的理解你。必须用真实事件测试判断质量。\n建议动作：立即跑 5 条真实事件压力测试，并记录低分项。",
+          "reason": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "pending",
+          "outcomeId": "out_1780917987484_f36fc30e7a08f8",
+          "createdAt": "2026-06-08T11:26:27.485Z"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917987484_f36fc30e7a08f8",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917987485_29034e1de41778",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "",
+          "resultStatus": "pending",
+          "reviewNote": "",
+          "createdAt": "2026-06-08T11:26:27.485Z"
+        }
+      ],
+      "latestFeedback": null,
+      "latestRevision": null,
+      "feedbackCount": 0,
+      "revisionCount": 0
+    },
+    "selectedFeedback": "accurate",
+    "afterFeedback": {
+      "index": 1,
+      "group": "original",
+      "name": "原始 1",
+      "input": {
+        "group": "original",
+        "name": "原始 1",
+        "type": "action",
+        "text": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。"
+      },
+      "event": {
+        "id": "evt_1780917987484_cdb9c0fd6841c8",
+        "type": "action",
+        "content": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:27.484Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917987484_ad6dfe018a08",
+          "type": "行为记忆",
+          "content": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "sourceEventId": "evt_1780917987484_cdb9c0fd6841c8",
+          "evidence": "来自 行为事件：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:27.484Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.81
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917987484_b99ea3b3f2928",
+          "sourceEventId": "evt_1780917987484_cdb9c0fd6841c8",
+          "type": "progress",
+          "subtype": "milestone",
+          "description": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "evidence": "今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:27.484Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917987485_29034e1de41778",
+          "signalId": "sig_1780917987484_b99ea3b3f2928",
+          "message": "我为什么提醒你：你已经完成一个阶段成果，下一步应该验收质量，而不是把完成感误认为能力达标。\n我观察到：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。\n反方判断：结构补齐不等于军师真的理解你。必须用真实事件测试判断质量。\n建议动作：立即跑 5 条真实事件压力测试，并记录低分项。",
+          "reason": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天 Codex 已经完成了超级军师系统的 V1 架构验收和补强，补了用户反馈、结果追踪、模型修正历史，并验证了静态页面和 SQLite schema。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "accurate",
+          "outcomeId": "out_1780917987484_f36fc30e7a08f8",
+          "createdAt": "2026-06-08T11:26:27.485Z",
+          "userResponse": "accurate"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917987484_f36fc30e7a08f8",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917987485_29034e1de41778",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "反馈：准确",
+          "resultStatus": "reviewed",
+          "reviewNote": "提醒被用户确认，可保持或提高相关假设置信度。",
+          "createdAt": "2026-06-08T11:26:27.485Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917988124_2d9ca60ff16f08",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917987485_29034e1de41778",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:28.124Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917988125_9f262b4558bb1",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917988124_2d9ca60ff16f08",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:28.125Z"
+      },
+      "feedbackCount": 1,
+      "revisionCount": 1
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 2,
+      "group": "original",
+      "name": "原始 2",
+      "input": {
+        "group": "original",
+        "name": "原始 2",
+        "type": "risk",
+        "text": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。"
+      },
+      "event": {
+        "id": "evt_1780917988907_1acf01227c9608",
+        "type": "risk",
+        "content": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:28.907Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917988907_ca57155963f938",
+          "type": "风险记忆",
+          "content": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "sourceEventId": "evt_1780917988907_1acf01227c9608",
+          "evidence": "来自 风险事件：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:28.907Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 1 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917988907_73960b6823fde8",
+          "sourceEventId": "evt_1780917988907_1acf01227c9608",
+          "type": "risk",
+          "subtype": "judgment_quality",
+          "description": "这不是普通风险，而是 V1 是否具备军师能力的核心验收风险：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "evidence": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "goal": "个人超级军师",
+          "importance": 5,
+          "urgency": 5,
+          "actionability": 5,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 1,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:28.907Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917988907_17f5c2cd20ace",
+          "signalId": "sig_1780917988907_73960b6823fde8",
+          "message": "我为什么提醒你：你担心的不是小 bug，而是产品灵魂风险。\n我观察到：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。\n反方判断：如果系统只能复述关键词，哪怕链路完整，也只是高级表单和模板提醒。\n建议动作：先评分事件理解、信号识别和反迎合能力；低于 4 分就补规则，不进 SQLite。",
+          "reason": "这不是普通风险，而是 V1 是否具备军师能力的核心验收风险：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "pending",
+          "outcomeId": "out_1780917988907_25bbd0f8ede078",
+          "createdAt": "2026-06-08T11:26:28.907Z"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917988907_25bbd0f8ede078",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917988907_17f5c2cd20ace",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "",
+          "resultStatus": "pending",
+          "reviewNote": "",
+          "createdAt": "2026-06-08T11:26:28.907Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917988124_2d9ca60ff16f08",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917987485_29034e1de41778",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:28.124Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917988125_9f262b4558bb1",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917988124_2d9ca60ff16f08",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:28.125Z"
+      },
+      "feedbackCount": 1,
+      "revisionCount": 1
+    },
+    "selectedFeedback": "accurate",
+    "afterFeedback": {
+      "index": 2,
+      "group": "original",
+      "name": "原始 2",
+      "input": {
+        "group": "original",
+        "name": "原始 2",
+        "type": "risk",
+        "text": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。"
+      },
+      "event": {
+        "id": "evt_1780917988907_1acf01227c9608",
+        "type": "risk",
+        "content": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:28.907Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917988907_ca57155963f938",
+          "type": "风险记忆",
+          "content": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "sourceEventId": "evt_1780917988907_1acf01227c9608",
+          "evidence": "来自 风险事件：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:28.907Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.81
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 1 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917988907_73960b6823fde8",
+          "sourceEventId": "evt_1780917988907_1acf01227c9608",
+          "type": "risk",
+          "subtype": "judgment_quality",
+          "description": "这不是普通风险，而是 V1 是否具备军师能力的核心验收风险：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "evidence": "我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "goal": "个人超级军师",
+          "importance": 5,
+          "urgency": 5,
+          "actionability": 5,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 1,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:28.907Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917988907_17f5c2cd20ace",
+          "signalId": "sig_1780917988907_73960b6823fde8",
+          "message": "我为什么提醒你：你担心的不是小 bug，而是产品灵魂风险。\n我观察到：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。\n反方判断：如果系统只能复述关键词，哪怕链路完整，也只是高级表单和模板提醒。\n建议动作：先评分事件理解、信号识别和反迎合能力；低于 4 分就补规则，不进 SQLite。",
+          "reason": "这不是普通风险，而是 V1 是否具备军师能力的核心验收风险：我担心现在虽然有了事件、记忆、模型、信号、触达、反馈，但它可能只是根据关键词生成内容，并没有真正理解我的处境。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "accurate",
+          "outcomeId": "out_1780917988907_25bbd0f8ede078",
+          "createdAt": "2026-06-08T11:26:28.907Z",
+          "userResponse": "accurate"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917988907_25bbd0f8ede078",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917988907_17f5c2cd20ace",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "反馈：准确",
+          "resultStatus": "reviewed",
+          "reviewNote": "提醒被用户确认，可保持或提高相关假设置信度。",
+          "createdAt": "2026-06-08T11:26:28.907Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917989517_fee15e26b14128",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917988907_17f5c2cd20ace",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:29.517Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917989517_840d14ca472328",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917989517_fee15e26b14128",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:29.517Z"
+      },
+      "feedbackCount": 2,
+      "revisionCount": 2
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 3,
+      "group": "original",
+      "name": "原始 3",
+      "input": {
+        "group": "original",
+        "name": "原始 3",
+        "type": "deviation",
+        "text": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。"
+      },
+      "event": {
+        "id": "evt_1780917990317_0b2a27141f93d8",
+        "type": "deviation",
+        "content": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:30.317Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917990317_21bcd6b541005",
+          "type": "偏离记忆",
+          "content": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "sourceEventId": "evt_1780917990317_0b2a27141f93d8",
+          "evidence": "来自 偏离事件：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:30.317Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 2 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917990317_238e43d5f650d",
+          "sourceEventId": "evt_1780917990317_0b2a27141f93d8",
+          "type": "deviation",
+          "subtype": "scope_creep",
+          "description": "你正在从验收滑向继续扩展终局功能，当前应先完成真实事件测试：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "evidence": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "goal": "个人超级军师",
+          "importance": 5,
+          "urgency": 5,
+          "actionability": 5,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 1,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:30.317Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917990317_b47f13c3cd3318",
+          "signalId": "sig_1780917990317_238e43d5f650d",
+          "message": "我为什么提醒你：你正在从验收任务滑向继续扩展终局功能。\n我观察到：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。\n反方判断：继续讨论语音、浏览器、邮件、位置、健康数据，会让你绕开当前 V1 判断质量问题。\n建议动作：停止扩展功能讨论，先完成 5 条真实事件测试。",
+          "reason": "你正在从验收滑向继续扩展终局功能，当前应先完成真实事件测试：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "pending",
+          "outcomeId": "out_1780917990317_f60418a9624c6",
+          "createdAt": "2026-06-08T11:26:30.317Z"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917990317_f60418a9624c6",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917990317_b47f13c3cd3318",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "",
+          "resultStatus": "pending",
+          "reviewNote": "",
+          "createdAt": "2026-06-08T11:26:30.317Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917989517_fee15e26b14128",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917988907_17f5c2cd20ace",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:29.517Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917989517_840d14ca472328",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917989517_fee15e26b14128",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:29.517Z"
+      },
+      "feedbackCount": 2,
+      "revisionCount": 2
+    },
+    "selectedFeedback": "accurate",
+    "afterFeedback": {
+      "index": 3,
+      "group": "original",
+      "name": "原始 3",
+      "input": {
+        "group": "original",
+        "name": "原始 3",
+        "type": "deviation",
+        "text": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。"
+      },
+      "event": {
+        "id": "evt_1780917990317_0b2a27141f93d8",
+        "type": "deviation",
+        "content": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:30.317Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917990317_21bcd6b541005",
+          "type": "偏离记忆",
+          "content": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "sourceEventId": "evt_1780917990317_0b2a27141f93d8",
+          "evidence": "来自 偏离事件：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:30.317Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.81
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 2 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917990317_238e43d5f650d",
+          "sourceEventId": "evt_1780917990317_0b2a27141f93d8",
+          "type": "deviation",
+          "subtype": "scope_creep",
+          "description": "你正在从验收滑向继续扩展终局功能，当前应先完成真实事件测试：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "evidence": "我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "goal": "个人超级军师",
+          "importance": 5,
+          "urgency": 5,
+          "actionability": 5,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 1,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:30.317Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917990317_b47f13c3cd3318",
+          "signalId": "sig_1780917990317_238e43d5f650d",
+          "message": "我为什么提醒你：你正在从验收任务滑向继续扩展终局功能。\n我观察到：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。\n反方判断：继续讨论语音、浏览器、邮件、位置、健康数据，会让你绕开当前 V1 判断质量问题。\n建议动作：停止扩展功能讨论，先完成 5 条真实事件测试。",
+          "reason": "你正在从验收滑向继续扩展终局功能，当前应先完成真实事件测试：我今天又想继续讨论更多终局功能，比如语音、浏览器、邮件、位置和健康数据接入，但还没有测试现在 V1 的 5 条真实事件。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "accurate",
+          "outcomeId": "out_1780917990317_f60418a9624c6",
+          "createdAt": "2026-06-08T11:26:30.317Z",
+          "userResponse": "accurate"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917990317_f60418a9624c6",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917990317_b47f13c3cd3318",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "反馈：准确",
+          "resultStatus": "reviewed",
+          "reviewNote": "提醒被用户确认，可保持或提高相关假设置信度。",
+          "createdAt": "2026-06-08T11:26:30.317Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917990949_8924b48890823",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917990317_b47f13c3cd3318",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:30.949Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917990949_7ea46ecbf1a64",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917990949_8924b48890823",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:30.949Z"
+      },
+      "feedbackCount": 3,
+      "revisionCount": 3
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 4,
+      "group": "original",
+      "name": "原始 4",
+      "input": {
+        "group": "original",
+        "name": "原始 4",
+        "type": "risk",
+        "text": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。"
+      },
+      "event": {
+        "id": "evt_1780917991716_1a9b17c9aaba8",
+        "type": "risk",
+        "content": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:31.716Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917991717_26b24d14871c2",
+          "type": "风险记忆",
+          "content": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "sourceEventId": "evt_1780917991716_1a9b17c9aaba8",
+          "evidence": "来自 风险事件：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:31.717Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 3 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917991717_b37e194ef9dbb",
+          "sourceEventId": "evt_1780917991716_1a9b17c9aaba8",
+          "type": "risk",
+          "subtype": "competition_risk",
+          "description": "这是竞争格局风险，不能只记录焦虑，需要转成差异化验证任务：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "evidence": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "goal": "个人超级军师",
+          "importance": 5,
+          "urgency": 3,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:31.717Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917991717_12377d9e822b98",
+          "signalId": "sig_1780917991717_b37e194ef9dbb",
+          "message": "我为什么提醒你：大厂竞争是真风险，但焦虑本身不能指导决策。\n我观察到：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。\n反方判断：如果你的差异化只是 memory、agent、personal assistant，很容易被大厂覆盖。\n建议动作：把问题改成验证任务：你的护城河是否是个人局势主循环、证据链、反迎合和长期结果追踪。",
+          "reason": "这是竞争格局风险，不能只记录焦虑，需要转成差异化验证任务：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "pending",
+          "outcomeId": "out_1780917991717_f2f897c3b5dbd8",
+          "createdAt": "2026-06-08T11:26:31.717Z"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917991717_f2f897c3b5dbd8",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917991717_12377d9e822b98",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "",
+          "resultStatus": "pending",
+          "reviewNote": "",
+          "createdAt": "2026-06-08T11:26:31.717Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917990949_8924b48890823",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917990317_b47f13c3cd3318",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:30.949Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917990949_7ea46ecbf1a64",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917990949_8924b48890823",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:30.949Z"
+      },
+      "feedbackCount": 3,
+      "revisionCount": 3
+    },
+    "selectedFeedback": "accurate",
+    "afterFeedback": {
+      "index": 4,
+      "group": "original",
+      "name": "原始 4",
+      "input": {
+        "group": "original",
+        "name": "原始 4",
+        "type": "risk",
+        "text": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。"
+      },
+      "event": {
+        "id": "evt_1780917991716_1a9b17c9aaba8",
+        "type": "risk",
+        "content": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:31.716Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917991717_26b24d14871c2",
+          "type": "风险记忆",
+          "content": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "sourceEventId": "evt_1780917991716_1a9b17c9aaba8",
+          "evidence": "来自 风险事件：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:31.717Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.81
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 3 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917991717_b37e194ef9dbb",
+          "sourceEventId": "evt_1780917991716_1a9b17c9aaba8",
+          "type": "risk",
+          "subtype": "competition_risk",
+          "description": "这是竞争格局风险，不能只记录焦虑，需要转成差异化验证任务：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "evidence": "我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "goal": "个人超级军师",
+          "importance": 5,
+          "urgency": 3,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:31.717Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917991717_12377d9e822b98",
+          "signalId": "sig_1780917991717_b37e194ef9dbb",
+          "message": "我为什么提醒你：大厂竞争是真风险，但焦虑本身不能指导决策。\n我观察到：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。\n反方判断：如果你的差异化只是 memory、agent、personal assistant，很容易被大厂覆盖。\n建议动作：把问题改成验证任务：你的护城河是否是个人局势主循环、证据链、反迎合和长期结果追踪。",
+          "reason": "这是竞争格局风险，不能只记录焦虑，需要转成差异化验证任务：我看到越来越多 AI 产品都在做 memory、agent、personal assistant，我担心这个方向很快会被大厂吃掉。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "accurate",
+          "outcomeId": "out_1780917991717_f2f897c3b5dbd8",
+          "createdAt": "2026-06-08T11:26:31.717Z",
+          "userResponse": "accurate"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917991717_f2f897c3b5dbd8",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917991717_12377d9e822b98",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "反馈：准确",
+          "resultStatus": "reviewed",
+          "reviewNote": "提醒被用户确认，可保持或提高相关假设置信度。",
+          "createdAt": "2026-06-08T11:26:31.717Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917992351_5896418532a058",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917991717_12377d9e822b98",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:32.351Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917992351_f97d55363b96e8",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917992351_5896418532a058",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:32.351Z"
+      },
+      "feedbackCount": 4,
+      "revisionCount": 4
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 5,
+      "group": "original",
+      "name": "原始 5",
+      "input": {
+        "group": "original",
+        "name": "原始 5",
+        "type": "commitment",
+        "text": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。"
+      },
+      "event": {
+        "id": "evt_1780917993117_18d0a3102ccfb",
+        "type": "commitment",
+        "content": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:33.117Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917993117_41d12fa70a621",
+          "type": "承诺记忆",
+          "content": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "sourceEventId": "evt_1780917993117_18d0a3102ccfb",
+          "evidence": "来自 承诺事件：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:33.117Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 3 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917993117_d91a19604c5268",
+          "sourceEventId": "evt_1780917993117_18d0a3102ccfb",
+          "type": "commitment",
+          "subtype": "commitment_tracking",
+          "description": "你产生了一个需要追踪的承诺：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "evidence": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 4,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:33.117Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917993117_073715c551a0d",
+          "signalId": "sig_1780917993117_d91a19604c5268",
+          "message": "我为什么提醒你：你做了一个正确的收敛承诺，需要被追踪到结果。\n我观察到：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。\n反方判断：说“先测试”不等于真的会停下扩展冲动。\n建议动作：把这条承诺转成下一步动作：完成报告，并按分数决定是否补规则。",
+          "reason": "你产生了一个需要追踪的承诺：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "pending",
+          "outcomeId": "out_1780917993117_9ef89c50a1124",
+          "createdAt": "2026-06-08T11:26:33.117Z"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917993117_9ef89c50a1124",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917993117_073715c551a0d",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "",
+          "resultStatus": "pending",
+          "reviewNote": "",
+          "createdAt": "2026-06-08T11:26:33.117Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917992351_5896418532a058",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917991717_12377d9e822b98",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:32.351Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917992351_f97d55363b96e8",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917992351_5896418532a058",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:32.351Z"
+      },
+      "feedbackCount": 4,
+      "revisionCount": 4
+    },
+    "selectedFeedback": "accurate",
+    "afterFeedback": {
+      "index": 5,
+      "group": "original",
+      "name": "原始 5",
+      "input": {
+        "group": "original",
+        "name": "原始 5",
+        "type": "commitment",
+        "text": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。"
+      },
+      "event": {
+        "id": "evt_1780917993117_18d0a3102ccfb",
+        "type": "commitment",
+        "content": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:33.117Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917993117_41d12fa70a621",
+          "type": "承诺记忆",
+          "content": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "sourceEventId": "evt_1780917993117_18d0a3102ccfb",
+          "evidence": "来自 承诺事件：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:33.117Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.81
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 3 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917993117_d91a19604c5268",
+          "sourceEventId": "evt_1780917993117_18d0a3102ccfb",
+          "type": "commitment",
+          "subtype": "commitment_tracking",
+          "description": "你产生了一个需要追踪的承诺：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "evidence": "我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 4,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:33.117Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917993117_073715c551a0d",
+          "signalId": "sig_1780917993117_d91a19604c5268",
+          "message": "我为什么提醒你：你做了一个正确的收敛承诺，需要被追踪到结果。\n我观察到：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。\n反方判断：说“先测试”不等于真的会停下扩展冲动。\n建议动作：把这条承诺转成下一步动作：完成报告，并按分数决定是否补规则。",
+          "reason": "你产生了一个需要追踪的承诺：我决定先不继续扩展功能，也不马上上 SQLite，而是先完成 5 条真实事件测试，并根据结果修改判断规则。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "accurate",
+          "outcomeId": "out_1780917993117_9ef89c50a1124",
+          "createdAt": "2026-06-08T11:26:33.117Z",
+          "userResponse": "accurate"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917993117_9ef89c50a1124",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917993117_073715c551a0d",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "反馈：准确",
+          "resultStatus": "reviewed",
+          "reviewNote": "提醒被用户确认，可保持或提高相关假设置信度。",
+          "createdAt": "2026-06-08T11:26:33.117Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 6,
+      "group": "variant",
+      "name": "变体 1",
+      "input": {
+        "group": "variant",
+        "name": "变体 1",
+        "type": "risk",
+        "text": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。"
+      },
+      "event": {
+        "id": "evt_1780917994499_2cad98ac0e963",
+        "type": "risk",
+        "content": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:34.499Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917994499_b4af40a1c2bdb",
+          "type": "风险记忆",
+          "content": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "sourceEventId": "evt_1780917994499_2cad98ac0e963",
+          "evidence": "来自 风险事件：我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:34.499Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 4 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917994499_6a3b203c824838",
+          "sourceEventId": "evt_1780917994499_2cad98ac0e963",
+          "type": "risk",
+          "subtype": "general_risk",
+          "description": "这个风险可能影响当前核心目标：我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "evidence": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 3,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": false,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:34.499Z"
+        }
+      ],
+      "touchpoints": [],
+      "outcomes": [],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    },
+    "selectedFeedback": "inaccurate",
+    "afterFeedback": {
+      "index": 6,
+      "group": "variant",
+      "name": "变体 1",
+      "input": {
+        "group": "variant",
+        "name": "变体 1",
+        "type": "risk",
+        "text": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。"
+      },
+      "event": {
+        "id": "evt_1780917994499_2cad98ac0e963",
+        "type": "risk",
+        "content": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:34.499Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917994499_b4af40a1c2bdb",
+          "type": "风险记忆",
+          "content": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "sourceEventId": "evt_1780917994499_2cad98ac0e963",
+          "evidence": "来自 风险事件：我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:34.499Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 4 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917994499_6a3b203c824838",
+          "sourceEventId": "evt_1780917994499_2cad98ac0e963",
+          "type": "risk",
+          "subtype": "general_risk",
+          "description": "这个风险可能影响当前核心目标：我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "evidence": "我担心现在系统只是看起来会分析，但其实并没有真正抓住我为什么在意这件事，只是在把输入换一种说法输出。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 3,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": false,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:34.499Z"
+        }
+      ],
+      "touchpoints": [],
+      "outcomes": [],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 7,
+      "group": "variant",
+      "name": "变体 2",
+      "input": {
+        "group": "variant",
+        "name": "变体 2",
+        "type": "risk",
+        "text": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？"
+      },
+      "event": {
+        "id": "evt_1780917995282_2647dd1f773968",
+        "type": "risk",
+        "content": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:35.282Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917995282_300a4707e660b8",
+          "type": "风险记忆",
+          "content": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "sourceEventId": "evt_1780917995282_2647dd1f773968",
+          "evidence": "来自 风险事件：如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:35.282Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 5 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917995282_739d6b2ca2108",
+          "sourceEventId": "evt_1780917995282_2647dd1f773968",
+          "type": "risk",
+          "subtype": "general_risk",
+          "description": "这个风险可能影响当前核心目标：如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "evidence": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 3,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": false,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:35.282Z"
+        }
+      ],
+      "touchpoints": [],
+      "outcomes": [],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    },
+    "selectedFeedback": "inaccurate",
+    "afterFeedback": {
+      "index": 7,
+      "group": "variant",
+      "name": "变体 2",
+      "input": {
+        "group": "variant",
+        "name": "变体 2",
+        "type": "risk",
+        "text": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？"
+      },
+      "event": {
+        "id": "evt_1780917995282_2647dd1f773968",
+        "type": "risk",
+        "content": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:35.282Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917995282_300a4707e660b8",
+          "type": "风险记忆",
+          "content": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "sourceEventId": "evt_1780917995282_2647dd1f773968",
+          "evidence": "来自 风险事件：如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:35.282Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 5 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917995282_739d6b2ca2108",
+          "sourceEventId": "evt_1780917995282_2647dd1f773968",
+          "type": "risk",
+          "subtype": "general_risk",
+          "description": "这个风险可能影响当前核心目标：如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "evidence": "如果系统级入口最终都被 OpenAI、Google、Apple 这些平台掌握，我们这个方向还有没有必要继续做？",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 3,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": false,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:35.282Z"
+        }
+      ],
+      "touchpoints": [],
+      "outcomes": [],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 8,
+      "group": "variant",
+      "name": "变体 3",
+      "input": {
+        "group": "variant",
+        "name": "变体 3",
+        "type": "deviation",
+        "text": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。"
+      },
+      "event": {
+        "id": "evt_1780917996052_c5feb8fd17a1c8",
+        "type": "deviation",
+        "content": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:36.052Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917996052_310acb3ab14c2",
+          "type": "偏离记忆",
+          "content": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "sourceEventId": "evt_1780917996052_c5feb8fd17a1c8",
+          "evidence": "来自 偏离事件：我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:36.052Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 6 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917996052_79b9691d78d428",
+          "sourceEventId": "evt_1780917996052_c5feb8fd17a1c8",
+          "type": "risk",
+          "subtype": "general_risk",
+          "description": "这个风险可能影响当前核心目标：我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "evidence": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 3,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": false,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:36.052Z"
+        }
+      ],
+      "touchpoints": [],
+      "outcomes": [],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    },
+    "selectedFeedback": "inaccurate",
+    "afterFeedback": {
+      "index": 8,
+      "group": "variant",
+      "name": "变体 3",
+      "input": {
+        "group": "variant",
+        "name": "变体 3",
+        "type": "deviation",
+        "text": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。"
+      },
+      "event": {
+        "id": "evt_1780917996052_c5feb8fd17a1c8",
+        "type": "deviation",
+        "content": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:36.052Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917996052_310acb3ab14c2",
+          "type": "偏离记忆",
+          "content": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "sourceEventId": "evt_1780917996052_c5feb8fd17a1c8",
+          "evidence": "来自 偏离事件：我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:36.052Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 1 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 6 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917996052_79b9691d78d428",
+          "sourceEventId": "evt_1780917996052_c5feb8fd17a1c8",
+          "type": "risk",
+          "subtype": "general_risk",
+          "description": "这个风险可能影响当前核心目标：我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "evidence": "我又开始想把语音、浏览器、邮件、健康数据都加进去，但当前这一版的判断质量还没有真正验证。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 3,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": false,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:36.052Z"
+        }
+      ],
+      "touchpoints": [],
+      "outcomes": [],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 9,
+      "group": "variant",
+      "name": "变体 4",
+      "input": {
+        "group": "variant",
+        "name": "变体 4",
+        "type": "action",
+        "text": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。"
+      },
+      "event": {
+        "id": "evt_1780917996819_987cf56065138",
+        "type": "action",
+        "content": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:36.819Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917996819_1fb07c021abf",
+          "type": "行为记忆",
+          "content": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "sourceEventId": "evt_1780917996819_987cf56065138",
+          "evidence": "来自 行为事件：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:36.819Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 2 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 6 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917996819_2e2aa3b15646d",
+          "sourceEventId": "evt_1780917996819_987cf56065138",
+          "type": "progress",
+          "subtype": "milestone",
+          "description": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "evidence": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:36.819Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917996819_a1a40501110e2",
+          "signalId": "sig_1780917996819_2e2aa3b15646d",
+          "message": "我为什么提醒你：你已经完成一个阶段成果，下一步应该验收质量，而不是把完成感误认为能力达标。\n我观察到：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。\n反方判断：结构补齐不等于军师真的理解你。必须用真实事件测试判断质量。\n建议动作：立即跑 5 条真实事件压力测试，并记录低分项。",
+          "reason": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "pending",
+          "outcomeId": "out_1780917996819_503734846a0f7",
+          "createdAt": "2026-06-08T11:26:36.819Z"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917996819_503734846a0f7",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917996819_a1a40501110e2",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "",
+          "resultStatus": "pending",
+          "reviewNote": "",
+          "createdAt": "2026-06-08T11:26:36.819Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917993716_a433a967f26c9",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917993117_073715c551a0d",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917993716_86d907d440d878",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917993716_a433a967f26c9",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:33.716Z"
+      },
+      "feedbackCount": 5,
+      "revisionCount": 5
+    },
+    "selectedFeedback": "accurate",
+    "afterFeedback": {
+      "index": 9,
+      "group": "variant",
+      "name": "变体 4",
+      "input": {
+        "group": "variant",
+        "name": "变体 4",
+        "type": "action",
+        "text": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。"
+      },
+      "event": {
+        "id": "evt_1780917996819_987cf56065138",
+        "type": "action",
+        "content": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:36.819Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917996819_1fb07c021abf",
+          "type": "行为记忆",
+          "content": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "sourceEventId": "evt_1780917996819_987cf56065138",
+          "evidence": "来自 行为事件：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:36.819Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 2 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.81
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 1 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 6 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917996819_2e2aa3b15646d",
+          "sourceEventId": "evt_1780917996819_987cf56065138",
+          "type": "progress",
+          "subtype": "milestone",
+          "description": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "evidence": "今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 3,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:36.819Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917996819_a1a40501110e2",
+          "signalId": "sig_1780917996819_2e2aa3b15646d",
+          "message": "我为什么提醒你：你已经完成一个阶段成果，下一步应该验收质量，而不是把完成感误认为能力达标。\n我观察到：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。\n反方判断：结构补齐不等于军师真的理解你。必须用真实事件测试判断质量。\n建议动作：立即跑 5 条真实事件压力测试，并记录低分项。",
+          "reason": "你完成了一个关键阶段成果，需要立刻进入验收而不是继续扩展：今天项目已经从文档讨论推进到了可以在页面里输入事件并看到反馈、结果和模型修正。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "accurate",
+          "outcomeId": "out_1780917996819_503734846a0f7",
+          "createdAt": "2026-06-08T11:26:36.819Z",
+          "userResponse": "accurate"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917996819_503734846a0f7",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917996819_a1a40501110e2",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "反馈：准确",
+          "resultStatus": "reviewed",
+          "reviewNote": "提醒被用户确认，可保持或提高相关假设置信度。",
+          "createdAt": "2026-06-08T11:26:36.819Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917997450_ce3ba6fe72a36",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917996819_a1a40501110e2",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:37.450Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917997450_c6471c8ad30b7",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917997450_ce3ba6fe72a36",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:37.450Z"
+      },
+      "feedbackCount": 6,
+      "revisionCount": 6
+    }
+  },
+  {
+    "beforeFeedback": {
+      "index": 10,
+      "group": "variant",
+      "name": "变体 5",
+      "input": {
+        "group": "variant",
+        "name": "变体 5",
+        "type": "commitment",
+        "text": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。"
+      },
+      "event": {
+        "id": "evt_1780917998216_ac056e9814161",
+        "type": "commitment",
+        "content": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:38.216Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917998217_71e680d7b00678",
+          "type": "承诺记忆",
+          "content": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "sourceEventId": "evt_1780917998216_ac056e9814161",
+          "evidence": "来自 承诺事件：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:38.217Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 2 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.76
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 2 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 6 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917998217_f3ec325bd37ea8",
+          "sourceEventId": "evt_1780917998216_ac056e9814161",
+          "type": "commitment",
+          "subtype": "commitment_tracking",
+          "description": "你产生了一个需要追踪的承诺：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "evidence": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 4,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:38.217Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917998217_4681c223551ad",
+          "signalId": "sig_1780917998217_f3ec325bd37ea8",
+          "message": "我为什么提醒你：你做了一个正确的收敛承诺，需要被追踪到结果。\n我观察到：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。\n反方判断：说“先测试”不等于真的会停下扩展冲动。\n建议动作：把这条承诺转成下一步动作：完成报告，并按分数决定是否补规则。",
+          "reason": "你产生了一个需要追踪的承诺：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "pending",
+          "outcomeId": "out_1780917998217_2c0b6ccc0716d",
+          "createdAt": "2026-06-08T11:26:38.217Z"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917998217_2c0b6ccc0716d",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917998217_4681c223551ad",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "",
+          "resultStatus": "pending",
+          "reviewNote": "",
+          "createdAt": "2026-06-08T11:26:38.217Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917997450_ce3ba6fe72a36",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917996819_a1a40501110e2",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:37.450Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917997450_c6471c8ad30b7",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917997450_ce3ba6fe72a36",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:37.450Z"
+      },
+      "feedbackCount": 6,
+      "revisionCount": 6
+    },
+    "selectedFeedback": "accurate",
+    "afterFeedback": {
+      "index": 10,
+      "group": "variant",
+      "name": "变体 5",
+      "input": {
+        "group": "variant",
+        "name": "变体 5",
+        "type": "commitment",
+        "text": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。"
+      },
+      "event": {
+        "id": "evt_1780917998216_ac056e9814161",
+        "type": "commitment",
+        "content": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+        "goal": "个人超级军师",
+        "importance": 5,
+        "confidence": 0.75,
+        "sensitivity": "P0",
+        "evidenceSummary": "第二轮复测",
+        "createdAt": "2026-06-08T11:26:38.216Z"
+      },
+      "memories": [
+        {
+          "id": "mem_1780917998217_71e680d7b00678",
+          "type": "承诺记忆",
+          "content": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "sourceEventId": "evt_1780917998216_ac056e9814161",
+          "evidence": "来自 承诺事件：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "counterEvidence": "暂无反例，等待后续反馈或结果追踪验证。",
+          "confidence": 0.75,
+          "importance": 5,
+          "sensitivity": "P0",
+          "userConfirmed": false,
+          "allowForAdvice": true,
+          "createdAt": "2026-06-08T11:26:38.217Z"
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hyp_progress_validation",
+          "content": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+          "evidence": "已记录 2 条行为/进展事件。",
+          "counterEvidence": "如果后续测试证明判断规则很弱，说明进展只是结构补齐，不代表军师能力达标。",
+          "validationPlan": "用真实事件压力测试检验信号识别、反迎合提醒和模型修正是否有效。",
+          "confidence": 0.81
+        },
+        {
+          "id": "hyp_commitment_tracking",
+          "content": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+          "evidence": "已记录 2 条承诺事件。",
+          "counterEvidence": "承诺可能只是临时表达，需要后续完成情况验证。",
+          "validationPlan": "检查承诺是否在后续事件或结果记录中被完成。",
+          "confidence": 0.72
+        },
+        {
+          "id": "hyp_deviation_risk",
+          "content": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+          "evidence": "已记录 6 条风险或偏离事件。",
+          "counterEvidence": "如果这些风险已被行动消解，模型需要下调风险权重。",
+          "validationPlan": "观察提醒后是否产生纠偏行动或用户反馈。",
+          "confidence": 0.74
+        }
+      ],
+      "signals": [
+        {
+          "id": "sig_1780917998217_f3ec325bd37ea8",
+          "sourceEventId": "evt_1780917998216_ac056e9814161",
+          "type": "commitment",
+          "subtype": "commitment_tracking",
+          "description": "你产生了一个需要追踪的承诺：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "evidence": "接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "goal": "个人超级军师",
+          "importance": 4,
+          "urgency": 4,
+          "actionability": 4,
+          "confidence": 0.75,
+          "falsePositiveRisk": 1,
+          "interruptCost": 2,
+          "shouldTouch": true,
+          "status": "open",
+          "createdAt": "2026-06-08T11:26:38.217Z"
+        }
+      ],
+      "touchpoints": [
+        {
+          "id": "touch_1780917998217_4681c223551ad",
+          "signalId": "sig_1780917998217_f3ec325bd37ea8",
+          "message": "我为什么提醒你：你做了一个正确的收敛承诺，需要被追踪到结果。\n我观察到：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。\n反方判断：说“先测试”不等于真的会停下扩展冲动。\n建议动作：把这条承诺转成下一步动作：完成报告，并按分数决定是否补规则。",
+          "reason": "你产生了一个需要追踪的承诺：接下来最好先把这 5 条测试跑扎实，分数不够就继续改规则，不要急着做数据库。",
+          "recommendedAction": "确认这个提醒是否准确。如果准确，把它转成下一步行动；如果不准确，系统下调相关模型置信度。",
+          "deliveryChannel": "dashboard",
+          "feedbackStatus": "accurate",
+          "outcomeId": "out_1780917998217_2c0b6ccc0716d",
+          "createdAt": "2026-06-08T11:26:38.217Z",
+          "userResponse": "accurate"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "out_1780917998217_2c0b6ccc0716d",
+          "targetType": "touchpoint",
+          "targetId": "touch_1780917998217_4681c223551ad",
+          "expectedResult": "用户给出准确性反馈，并推动模型修正或结果追踪。",
+          "actualResult": "反馈：准确",
+          "resultStatus": "reviewed",
+          "reviewNote": "提醒被用户确认，可保持或提高相关假设置信度。",
+          "createdAt": "2026-06-08T11:26:38.217Z"
+        }
+      ],
+      "latestFeedback": {
+        "id": "fb_1780917998833_069efa27b25f3",
+        "targetType": "touchpoint",
+        "targetId": "touch_1780917998217_4681c223551ad",
+        "value": "accurate",
+        "note": "反馈：准确",
+        "createdAt": "2026-06-08T11:26:38.833Z"
+      },
+      "latestRevision": {
+        "id": "rev_1780917998833_2242953c3a8578",
+        "hypothesisId": "hyp_progress_validation",
+        "feedbackId": "fb_1780917998833_069efa27b25f3",
+        "previousContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "newContent": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+        "reason": "用户确认触达准确，提高相关模型置信度。",
+        "confidenceBefore": 0.76,
+        "confidenceAfter": 0.81,
+        "createdAt": "2026-06-08T11:26:38.833Z"
+      },
+      "feedbackCount": 7,
+      "revisionCount": 7
+    }
+  }
+]

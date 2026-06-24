@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>超级助理 · 管理员</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f5f7; color: #1a1a2e; padding: 24px; }
+    h1 { font-size: 1.3rem; margin-bottom: 6px; }
+    h2 { font-size: 0.85rem; color: #6b7280; font-weight: 400; margin-bottom: 20px; }
+    .toolbar { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+    .toolbar button, .toolbar select { padding: 8px 16px; border-radius: 8px; border: 1px solid #d1d5db; background: #fff; cursor: pointer; font-size: .85rem; }
+    .toolbar button:hover { background: #f3f4f6; }
+    .user-list { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+    .user-chip { padding: 6px 14px; border-radius: 20px; border: 1px solid #d1d5db; background: #fff; cursor: pointer; font-size: .82rem; }
+    .user-chip.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+    .conv-card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 10px; border: 1px solid #e5e5e6; }
+    .conv-card .meta { font-size: .75rem; color: #9ca3af; margin-bottom: 4px; display: flex; gap: 12px; }
+    .conv-card .q { font-weight: 500; margin-bottom: 4px; }
+    .conv-card .a { color: #4b5563; font-size: .88rem; line-height: 1.6; max-height: 120px; overflow: auto; white-space: pre-wrap; }
+    .stat { background: #fff; border-radius: 10px; padding: 14px; border: 1px solid #e5e5e6; text-align: center; min-width: 80px; }
+    .stats { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+    .stat strong { font-size: 1.4rem; }
+    .stat span { font-size: .72rem; color: #9ca3af; display: block; }
+    .loading { color: #9ca3af; padding: 20px; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>超级助理 · 管理员面板</h1>
+  <h2>查看所有用户的对话记录，用于发现问题和优化产品</h2>
+
+  <div class="toolbar">
+    <button id="refreshBtn">刷新</button>
+    <select id="limitSelect">
+      <option value="20">最近20条</option>
+      <option value="50">最近50条</option>
+      <option value="100">最近100条</option>
+    </select>
+    <span style="font-size:.82rem;color:#9ca3af" id="totalSpan"></span>
+  </div>
+
+  <div class="user-list" id="userList"></div>
+  <div class="stats" id="stats"></div>
+
+  <div id="convList"><div class="loading">加载中...</div></div>
+
+  <script>
+    const API = "";
+    let allConvos = [];
+    let selectedUser = "";
+
+    async function load() {
+      const limit = $("#limitSelect").value;
+      try {
+        const r = await fetch(`${API}/api/admin/conversations?limit=${limit}`);
+        allConvos = await r.json();
+        render();
+      } catch(e) {
+        $("#convList").innerHTML = `<div class="loading">无法连接后端，请确认服务已启动</div>`;
+      }
+    }
+
+    function render() {
+      // Stats
+      const users = [...new Set(allConvos.map(c => c.user_id))];
+      const today = new Date().toISOString().slice(0,10);
+      const todayConvos = allConvos.filter(c => (c.created_at||"").startsWith(today));
+      $("#stats").innerHTML = `
+        <div class="stat"><strong>${users.length}</strong><span>活跃用户</span></div>
+        <div class="stat"><strong>${allConvos.length}</strong><span>总对话</span></div>
+        <div class="stat"><strong>${todayConvos.length}</strong><span>今日对话</span></div>
+      `;
+
+      // User chips
+      $("#userList").innerHTML = `<span class="user-chip ${selectedUser===''?'active':''}" onclick="selectUser('')">全部</span>` +
+        users.map(u => `<span class="user-chip ${selectedUser===u?'active':''}" onclick="selectUser('${u}')">${u}</span>`).join("");
+
+      // Conversations
+      let filtered = selectedUser ? allConvos.filter(c => c.user_id === selectedUser) : allConvos;
+      $("#totalSpan").textContent = `共 ${filtered.length} 条`;
+      $("#convList").innerHTML = filtered.slice(0, 100).map(c => `
+        <div class="conv-card">
+          <div class="meta">
+            <span>${(c.created_at||"").slice(0,19)}</span>
+            <span>用户：<strong>${esc(c.user_id)}</strong></span>
+            <span>任务：${esc(c.task_type||"")}</span>
+            <span>${c.llm_mode||""}</span>
+          </div>
+          <div class="q">Q: ${esc(c.user_message_summary||"")}</div>
+          <div class="a">A: ${esc((c.assistant_answer_summary||"").slice(0,600))}</div>
+        </div>
+      `).join("") || `<div class="loading">暂无数据</div>`;
+    }
+
+    function selectUser(uid) { selectedUser = uid; render(); }
+    function esc(v) { return String(v||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;"); }
+    const $ = s => document.querySelector(s);
+
+    $("#refreshBtn").addEventListener("click", load);
+    $("#limitSelect").addEventListener("change", load);
+    load();
+  </script>
+</body>
+</html>

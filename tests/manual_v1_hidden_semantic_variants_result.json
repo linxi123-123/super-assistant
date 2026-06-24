@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Hidden 1",
+    "input": "这个回答像是把我的话整理得更顺了，但没有判断我此刻真正卡在哪个选择上。",
+    "event": {"type": "risk", "card": "风险事件：回答像整理得更顺，但没有判断用户真正卡在哪个选择上。"},
+    "memory": {"type": "风险记忆", "content": "系统可能只是整理表达，而没有判断用户真正卡住的选择。"},
+    "hypothesis": "当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+    "signal": {
+      "type": "risk",
+      "subtype": "judgment_quality",
+      "cluster": "judgment_quality_risk",
+      "score": 6,
+      "matched_indicators": ["整理 + 没有判断", "真正卡 + 选择", "卡在 + 选择"]
+    },
+    "touchpoint": "指出这是伪理解风险：系统如果只是整理表达，没有判断用户卡在哪里，就不能进入持久化。",
+    "feedback": "accurate",
+    "model_revision": "hyp_progress_validation 置信度上调",
+    "scores": {"event_understanding": 4, "memory_extraction": 4, "model_hypothesis": 4, "signal_recognition": 5, "advisor_touch": 5, "anti_compliance": 5, "total": 27}
+  },
+  {
+    "name": "Hidden 2",
+    "input": "如果默认入口都长在操作系统和模型厂商那里，个人项目还能占住什么位置？",
+    "event": {"type": "risk", "card": "风险事件：系统级默认入口可能被操作系统和模型厂商掌握。"},
+    "memory": {"type": "风险记忆", "content": "用户担心默认入口在操作系统和模型厂商手里，个人项目位置被压缩。"},
+    "hypothesis": "当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+    "signal": {
+      "type": "risk",
+      "subtype": "competition_risk",
+      "cluster": "platform_competition_risk",
+      "score": 9,
+      "matched_indicators": ["默认入口", "入口 + 模型厂商", "长在 + 操作系统", "模型厂商", "操作系统", "占住 + 位置"]
+    },
+    "touchpoint": "指出这是平台入口风险：如果差异化只是普通 assistant 能力，会被平台型公司覆盖，应验证个人局势主循环是否构成差异化。",
+    "feedback": "accurate",
+    "model_revision": "hyp_deviation_risk 置信度上调",
+    "scores": {"event_understanding": 4, "memory_extraction": 4, "model_hypothesis": 4, "signal_recognition": 5, "advisor_touch": 5, "anti_compliance": 5, "total": 27}
+  },
+  {
+    "name": "Hidden 3",
+    "input": "我有点想先把更多输入来源全列进去，可核心判断还没证明过。",
+    "event": {"type": "deviation", "card": "偏离事件：想先扩展更多输入来源，但核心判断尚未证明。"},
+    "memory": {"type": "偏离记忆", "content": "用户有在核心判断未证明前扩展输入来源的倾向。"},
+    "hypothesis": "当前主要风险是目标和执行路径发生偏离，需要主动提醒机制。",
+    "signal": {
+      "type": "deviation",
+      "subtype": "scope_creep",
+      "cluster": "scope_creep_risk",
+      "score": 7,
+      "matched_indicators": ["核心判断 + 没 + 证明", "更多输入来源", "输入来源 + 全列"]
+    },
+    "touchpoint": "指出这是验证前扩张：更多输入来源会制造进展感，但不能证明 V1 是否真的会判断。",
+    "feedback": "accurate",
+    "model_revision": "hyp_deviation_risk 置信度上调",
+    "scores": {"event_understanding": 4, "memory_extraction": 4, "model_hypothesis": 4, "signal_recognition": 5, "advisor_touch": 5, "anti_compliance": 5, "total": 27}
+  },
+  {
+    "name": "Hidden 4",
+    "input": "没有过审计之前，先别把规则写死进持久化层。",
+    "event": {"type": "commitment", "card": "承诺事件：审计前不把规则固化进持久化层。"},
+    "memory": {"type": "承诺记忆", "content": "用户设置阶段门槛：审计未过前，不固化规则。"},
+    "hypothesis": "用户已经产生明确承诺，需要系统追踪承诺是否兑现。",
+    "signal": {
+      "type": "commitment",
+      "subtype": "commitment_tracking",
+      "cluster": "commitment_gate",
+      "score": 7,
+      "matched_indicators": ["审计 + 之前", "写死 + 持久化", "规则 + 写死"]
+    },
+    "touchpoint": "指出这是阶段门槛：说不固化规则必须被追踪，否则项目可能在低分逻辑上提前工程化。",
+    "feedback": "accurate",
+    "model_revision": "hyp_commitment_tracking 置信度上调",
+    "scores": {"event_understanding": 4, "memory_extraction": 4, "model_hypothesis": 4, "signal_recognition": 5, "advisor_touch": 5, "anti_compliance": 5, "total": 27}
+  },
+  {
+    "name": "Hidden 5",
+    "input": "现在已经能从录入事实走到提醒反馈和修正记录，接下来要确认这不是演示效果。",
+    "event": {"type": "action", "card": "行为事件：主循环已能从事实录入走到反馈和修正记录。"},
+    "memory": {"type": "行为记忆", "content": "项目已经具备从录入事实到提醒反馈和修正记录的演示闭环。"},
+    "hypothesis": "用户已经完成了 V1 架构补强，当前关键不是继续扩展功能，而是验证补强后的判断质量。",
+    "signal": {
+      "type": "progress",
+      "subtype": "milestone",
+      "cluster": "stage_transition_signal",
+      "score": null,
+      "matched_indicators": ["action event", "importance >= 4"]
+    },
+    "touchpoint": "指出阶段成果不等于能力达标：需要确认这不是演示效果，而是真判断能力。",
+    "feedback": "accurate",
+    "model_revision": "hyp_progress_validation 置信度上调",
+    "scores": {"event_understanding": 4, "memory_extraction": 4, "model_hypothesis": 4, "signal_recognition": 4, "advisor_touch": 5, "anti_compliance": 5, "total": 26}
+  }
+]

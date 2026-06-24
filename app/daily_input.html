@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>个人超级军师 · 每日作战输入包 W7D</title>
+  <link rel="stylesheet" href="./daily_input.css">
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">Daily War Room Input / W7D</p>
+      <h1>每日作战输入包</h1>
+      <p class="summary">只读原型：帮助用户理解每天最少输入什么，以及这些输入如何生成作战室当前判断。</p>
+    </div>
+    <div class="stage-box">
+      <strong>当前阶段</strong>
+      <span>W7D：日常输入机制最小实现</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="notice" aria-label="W7D boundary">
+      <h2>边界</h2>
+      <p>本页不保存、不编辑、不写入 JSON 或 SQLite，不接新数据源，不进入外部情报、执行代理或长期记忆治理中心开发。</p>
+    </section>
+
+    <section class="first-screen">
+      <div class="section-heading">
+        <p class="eyebrow">Minimum Daily Input</p>
+        <h2>每天最少只需要 1 条核心输入</h2>
+      </div>
+      <div class="minimal-rule">
+        <article>
+          <h3>可填其一</h3>
+          <p><strong>今日真实事件</strong> 或 <strong>当前最想判断的问题</strong></p>
+        </article>
+        <article>
+          <h3>必须带边界</h3>
+          <p>当前限制 / 禁止事项必须清楚，否则不得生成强判断。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="field-grid" aria-label="Daily input fields">
+      <article class="field-card required">
+        <span class="field-key">input_date</span>
+        <h3>输入日期</h3>
+        <p>记录输入属于哪一天。</p>
+        <p class="example">示例：2026-06-11</p>
+      </article>
+
+      <article class="field-card core">
+        <span class="field-key">key_event</span>
+        <h3>今日真实事件</h3>
+        <p>当天最重要的真实事件或事实变化。</p>
+        <p class="example">示例：W6E 已通过，用户选择进入 W7D。</p>
+      </article>
+
+      <article class="field-card core">
+        <span class="field-key">current_question</span>
+        <h3>当前判断问题</h3>
+        <p>今天最想让作战室帮助判断的问题。</p>
+        <p class="example">示例：下一步应该做最小输入原型，还是先补记忆治理？</p>
+      </article>
+
+      <article class="field-card">
+        <span class="field-key">project_state_change</span>
+        <h3>项目状态变化</h3>
+        <p>项目、目标、关系或资源状态发生了什么变化。</p>
+        <p class="example">示例：第一屏已经能区分当前判断与历史审计。</p>
+      </article>
+
+      <article class="field-card">
+        <span class="field-key">committed_action</span>
+        <h3>今日承诺动作</h3>
+        <p>用户已经承诺或准备今天完成的动作。</p>
+        <p class="example">示例：今天只验证每日输入包是否足够轻。</p>
+      </article>
+
+      <article class="field-card required">
+        <span class="field-key">constraints_or_forbidden</span>
+        <h3>限制与禁止事项</h3>
+        <p>当前明确不能做什么。</p>
+        <p class="example">示例：不写数据库，不接外部情报，不进入执行代理。</p>
+      </article>
+
+      <article class="field-card audit">
+        <span class="field-key">evidence_note</span>
+        <h3>证据说明</h3>
+        <p>输入来源或用户说明，用于审计。</p>
+        <p class="example">示例：来自用户在 W7 后的明确选择。</p>
+      </article>
+
+      <article class="field-card audit">
+        <span class="field-key">sensitivity</span>
+        <h3>敏感度</h3>
+        <p>标记输入敏感度：low / medium / high。</p>
+        <p class="example">规则：high 不得自动进入长期记忆或外部传输。</p>
+      </article>
+
+      <article class="field-card audit">
+        <span class="field-key">use_for_today_judgment</span>
+        <h3>是否用于今日判断</h3>
+        <p>yes / no / unclear。</p>
+        <p class="example">规则：unclear 不得生成强判断，需用户澄清。</p>
+      </article>
+    </section>
+
+    <section class="mapping" aria-label="Mapping to war room">
+      <div class="section-heading">
+        <p class="eyebrow">Mapping</p>
+        <h2>如何映射到作战室第一屏</h2>
+      </div>
+      <div class="mapping-grid">
+        <article>
+          <h3>当前局势一句话</h3>
+          <p>来自 key_event、current_question、project_state_change。</p>
+        </article>
+        <article>
+          <h3>当前最大矛盾</h3>
+          <p>来自 current_question、project_state_change、constraints_or_forbidden。</p>
+        </article>
+        <article>
+          <h3>军师直接判断</h3>
+          <p>只基于允许参与今日判断的输入，并保留反方判断。</p>
+        </article>
+        <article>
+          <h3>今日唯一动作</h3>
+          <p>来自 committed_action 和当前问题；多个动作冲突时先澄清。</p>
+        </article>
+        <article>
+          <h3>不要做清单</h3>
+          <p>优先显示 constraints_or_forbidden 和阶段硬边界。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="audit-boundary" aria-label="Audit boundary">
+      <h2>当前判断与历史审计边界</h2>
+      <div class="boundary-grid">
+        <article>
+          <h3>进入当前判断</h3>
+          <p>仅限 use_for_today_judgment = yes，且输入足以支撑今日判断的内容。</p>
+        </article>
+        <article>
+          <h3>只进入历史审计</h3>
+          <p>未确认、敏感、证据不足或标记为 no 的输入只用于审计和复盘。</p>
+        </article>
+        <article>
+          <h3>不得自动长期化</h3>
+          <p>在 M0 完成前，日常输入不得自动升级为长期事实、偏好或个人模型。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

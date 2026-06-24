@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>个人超级军师 · 历史审计面板 V1</title>
+    <link rel="stylesheet" href="./history.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <h1>个人超级军师 · 历史审计面板 V1</h1>
+        <p>只读加载 <code>data/history_snapshot_v1.json</code>，用于查看 15 条历史主循环链路。</p>
+      </div>
+      <a href="./index.html">返回原型</a>
+    </header>
+
+    <main>
+      <section class="panel" id="load-status" aria-live="polite">正在读取历史快照...</section>
+
+      <section class="panel" id="summary-panel">
+        <h2>Summary</h2>
+        <div class="metric-grid" id="summary-grid"></div>
+      </section>
+
+      <section class="two-column">
+        <div class="panel">
+          <h2>Signal Distribution</h2>
+          <div id="signal-distribution"></div>
+        </div>
+        <div class="panel">
+          <h2>Hypothesis Distribution</h2>
+          <div id="hypothesis-distribution"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Confidence Changes</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Hypothesis</th>
+                <th>Confidence</th>
+                <th>Type</th>
+                <th>Delta Reason</th>
+              </tr>
+            </thead>
+            <tbody id="confidence-changes"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Cases</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Case</th>
+                <th>Input</th>
+                <th>Total</th>
+                <th>Signal</th>
+                <th>Audit</th>
+                <th>Phase</th>
+                <th>Explain</th>
+                <th>Follow-up</th>
+                <th>Blockers</th>
+              </tr>
+            </thead>
+            <tbody id="case-list"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Case Detail</h2>
+        <p class="section-note">
+          Phase Context / Evidence Chain / Revision Explanation / Audit Readiness are read-only fields from JSON.
+        </p>
+        <div id="case-detail">请选择一条 case 查看完整链路。</div>
+      </section>
+
+      <section class="panel">
+        <h2>Audit Flags</h2>
+        <div id="audit-flags"></div>
+      </section>
+    </main>
+
+    <script src="./history.js"></script>
+  </body>
+</html>

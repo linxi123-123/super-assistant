@@ -1,0 +1,58 @@
+V1 History Evolution Analysis
+
+database: C:\Users\刘书桐\Documents\超级助理\data\super_assistant_v1.sqlite
+test_run: v1_15_case_history_seed
+
+1. signal_type counts
+- commitment_gate: 3
+- judgment_quality_risk: 3
+- platform_competition_risk: 3
+- scope_creep_risk: 3
+- stage_transition_signal: 2
+- progress_signal: 1
+
+2. hypothesis_key counts
+- hyp_commitment_gate: 3
+- hyp_judgment_quality_risk: 3
+- hyp_platform_competition_risk: 3
+- hyp_progress_validation: 3
+- hyp_scope_creep_risk: 3
+
+3. score summary
+- average_total_score: 27.03
+- min_total_score: 26.00
+- max_total_score: 28.00
+
+4. feedback type distribution
+- accurate: 15
+
+5. model revision counts
+- confidence_increase: 15
+
+6. confidence movement
+- confidence_up: 15
+- confidence_down: 0
+- confidence_unchanged: 0
+
+7. repeated risk/signals
+- commitment_gate: repeated 3 times
+- judgment_quality_risk: repeated 3 times
+- platform_competition_risk: repeated 3 times
+- scope_creep_risk: repeated 3 times
+- stage_transition_signal: repeated 2 times
+
+8. signal types that always produced touchpoints
+- commitment_gate: 3/3
+- judgment_quality_risk: 3/3
+- platform_competition_risk: 3/3
+- scope_creep_risk: 3/3
+- stage_transition_signal: 2/2
+- progress_signal: 1/1
+
+9. main current system risk inferred from history
+- commitment_gate appears most often (3 times).
+- Interpretation: the history still points to advisor judgment quality, scope discipline, and stage gates as the core product risks, not data-source breadth.
+
+10. next-stage recommendation
+- Recommendation: do not jump to external intelligence or execution agent yet.
+- Next best stage: build a minimal history query panel/spec only after user confirmation, or continue persistence tests with mixed multi-intent events if the product risk tolerance remains low.

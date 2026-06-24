@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>超级助理</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <span class="brand-mark">谋</span>
+        <div>
+          <strong>超级助理</strong>
+          <span id="greeting">上午好</span><span id="greetingName" class="clickable-name" title="点击切换用户"></span>
+        </div>
+        <small id="dateLine"></small>
+      </header>
+
+      <section id="dailyBriefing" class="briefing-grid">
+        <div class="briefing-card"><h3>昨日复盘</h3><div id="yesterdayCard"><p>加载中…</p></div></div>
+        <div class="briefing-card"><h3>今日焦点</h3><div id="todayCard"><p>加载中…</p></div></div>
+        <div class="briefing-card"><h3>明日建议</h3><div id="tomorrowCard"><p>加载中…</p></div></div>
+      </section>
+
+      <nav class="quick-bar">
+        <button class="quick-btn" data-prompt="今天广州天气怎么样？">☀ 天气</button>
+        <button class="quick-btn" data-prompt="今天股市怎么样？请结合我的 watchlist 分析。">📈 市场</button>
+        <button class="quick-btn" data-prompt="今天 AI 有什么最新资讯和论文？">🤖 AI 资讯</button>
+        <button class="quick-btn" data-prompt="请根据我当前项目状态，生成今天最该做的 3 个任务。">✅ 任务</button>
+        <button class="quick-btn" data-prompt="请帮我做一次决策复盘：当前项目下一步最该做什么？">🔍 复盘</button>
+      </nav>
+
+      <div id="conversation" class="conversation-flow"></div>
+
+      <div id="typingIndicator" class="typing-indicator" hidden>
+        <span></span><span></span><span></span>
+      </div>
+
+      <form id="chatForm" class="chat-bar">
+        <button id="voiceBtn" type="button" class="voice-btn" title="语音输入">🎤</button>
+        <textarea id="chatInput" rows="1" placeholder="跟超级助理说…" required></textarea>
+        <button type="submit" aria-label="发送">↑</button>
+      </form>
+
+      <footer class="app-footer">
+        <p id="statusLine">就绪 · 所有判断基于外部证据与长期记忆</p>
+      </footer>
+    </main>
+    <script src="./app.js?v=20260616"></script>
+  </body>
+</html>

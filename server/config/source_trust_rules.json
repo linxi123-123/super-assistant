@@ -1,0 +1,36 @@
+{
+  "official_high": [
+    "openai.com",
+    "api.openweathermap.org",
+    "openweathermap.org",
+    "open-meteo.com",
+    "api.open-meteo.com",
+    "deepseek.com",
+    "api-docs.deepseek.com",
+    "platform.moonshot.ai",
+    "sec.gov",
+    "hkexnews.hk",
+    "sse.com.cn",
+    "szse.cn",
+    "nasdaq.com",
+    "nyse.com",
+    "federalreserve.gov",
+    "stats.gov.cn",
+    "gov.cn",
+    "finnhub.io"
+  ],
+  "media_medium": [
+    "reuters.com",
+    "bloomberg.com",
+    "cnbc.com",
+    "wsj.com",
+    "ft.com",
+    "caixin.com",
+    "stcn.com",
+    "yicai.com",
+    "wallstreetcn.com",
+    "36kr.com",
+    "theverge.com",
+    "techcrunch.com"
+  ]
+}

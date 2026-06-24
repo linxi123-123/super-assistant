@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>个人超级军师 · 作战室 V1</title>
+  <link rel="stylesheet" href="./war_room.css">
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">Personal War Room V1</p>
+      <h1>个人超级军师 · 作战室 V1</h1>
+    </div>
+      <p id="load-status" class="status">正在读取 real_war_room_snapshot_v1.json...</p>
+  </header>
+
+  <nav class="module-nav" aria-label="War room module navigation">
+    <a href="#current-situation">Current Situation</a>
+    <a href="#advisor-brief">Advisor Brief</a>
+    <a href="#todays-action">Today’s Action</a>
+    <a href="#high-value-signals">Signals</a>
+    <a href="#personal-model-hypotheses">Hypotheses</a>
+    <a href="#commitments-gates">Gates</a>
+    <a href="#recent-history">History</a>
+    <a href="#audit-entry">Audit</a>
+    <a href="#source-audit">Snapshot Audit</a>
+  </nav>
+
+  <main>
+    <section id="real-war-room-brief" class="real-brief" aria-label="Real War Room Brief">
+      <div class="brief-kicker">Real War Room Brief / 真实作战室简报</div>
+      <section class="context-strip" aria-label="当前语境 / 判断时效">
+        <div class="context-primary">
+          <p class="context-label">当前阶段 current_stage_label</p>
+          <h2 id="current-stage-label">W6D：第一屏当前语境最小页面改造</h2>
+          <p class="context-source">来源：MASTER_ROADMAP / W6D 阶段</p>
+        </div>
+        <div class="context-grid">
+          <article>
+            <h3>判断生成时间 judgment_generated_at</h3>
+            <p id="judgment-generated-at">判断生成时间不可用</p>
+          </article>
+          <article>
+            <h3>判断有效期 / 适用窗口 judgment_valid_window</h3>
+            <p id="judgment-valid-window">本判断仅适用于当前 W5E/W6/W6D 验收后的项目推进决策，不代表长期战略判断。</p>
+          </article>
+          <article class="current-action-card">
+            <h3>当前唯一动作 current_action_label</h3>
+            <p id="current-action-label">当前唯一动作：完成 W6D 当前语境最小页面改造，并等待 W6E 人工验收。</p>
+          </article>
+          <article class="next-stage-card">
+            <h3>下一阶段门槛 next_stage_gate</h3>
+            <p id="next-stage-gate">下一阶段 W6E：第一屏当前语境人工验收。需要用户单独确认。未验收前不得进入 M0、外部情报或执行代理。</p>
+          </article>
+        </div>
+        <div class="forbidden-now" aria-label="当前禁止事项 forbidden_now">
+          <h3>当前禁止事项 forbidden_now</h3>
+          <ul>
+            <li>不进入外部情报</li>
+            <li>不进入执行代理</li>
+            <li>不接新数据源</li>
+            <li>不进入 M0 记忆治理中心开发</li>
+            <li>不跳过 W6E 人工验收</li>
+            <li>不把历史测试快照当成当前行动指令</li>
+          </ul>
+        </div>
+      </section>
+      <h2 id="real-situation-title">局势一句话</h2>
+      <p id="real-one-sentence" class="situation-line">正在读取真实事件快照...</p>
+
+      <div class="real-brief-grid">
+        <article class="brief-block direct-judgment">
+          <h3>军师直接判断</h3>
+          <p id="real-direct-judgment"></p>
+          <dl class="brief-detail">
+            <dt>为什么重要</dt>
+            <dd id="real-why-this-matters"></dd>
+            <dt>反方判断</dt>
+            <dd id="real-counter-argument"></dd>
+            <dt>不行动后果</dt>
+            <dd id="real-consequence"></dd>
+          </dl>
+        </article>
+
+        <article class="brief-block action-block">
+          <h3>今日唯一动作</h3>
+          <p id="real-only-action"></p>
+          <dl class="brief-detail">
+            <dt>完成定义</dt>
+            <dd id="real-done-definition"></dd>
+            <dt>时间盒</dt>
+            <dd id="real-time-box"></dd>
+          </dl>
+        </article>
+
+        <article class="brief-block avoid-block">
+          <h3>不要做清单</h3>
+          <ul id="real-avoid-list"></ul>
+        </article>
+
+        <article class="brief-block tension-block">
+          <h3>当前最大矛盾</h3>
+          <p id="real-main-tension"></p>
+        </article>
+      </div>
+
+      <div class="secondary-brief">
+        <article>
+          <h3>决策焦点</h3>
+          <p id="real-decision-question"></p>
+          <p id="real-recommended-option"></p>
+          <p id="real-decision-reason"></p>
+        </article>
+        <details>
+          <summary>P2 证据 / 阶段门槛 / 审计</summary>
+          <div id="real-p2-detail"></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="historical-shell" aria-label="Historical test snapshot">
+      <div class="historical-heading">
+        <p class="eyebrow">Historical / Test Snapshot</p>
+        <h2>历史测试快照与审计区</h2>
+        <p class="historical-notice" id="historical-context-notice">历史审计提示 historical_context_notice：下方 High-value Signals / Hypotheses / Recent History 来自历史测试快照或早期快照，仅用于审计与参考，不代表当前唯一行动指令。</p>
+        <p>以下模块来自 `war_room_snapshot_v1.json`，用于保留旧测试快照、信号、假设、历史与审计，不再作为第一屏主内容。</p>
+      </div>
+
+    <section class="top-grid" aria-label="First screen">
+      <article id="current-situation" class="panel priority module-panel" data-module="Current Situation">
+        <div class="module-heading">
+          <h2>Current Situation 当前局势</h2>
+          <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+        </div>
+        <div class="panel-body"></div>
+      </article>
+
+      <article id="advisor-brief" class="panel priority module-panel" data-module="Advisor Brief">
+        <div class="module-heading">
+          <h2>Advisor Brief 军师提醒</h2>
+          <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+        </div>
+        <div class="panel-body"></div>
+      </article>
+
+      <article id="todays-action" class="panel priority module-panel" data-module="Today’s Action">
+        <div class="module-heading">
+          <h2>Today’s Action 今日动作</h2>
+          <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+        </div>
+        <div class="panel-body"></div>
+      </article>
+    </section>
+
+    <section id="high-value-signals" class="panel module-panel" data-module="High-value Signals">
+      <div class="module-heading">
+        <h2>High-value Signals 高价值信号</h2>
+        <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+      </div>
+      <div class="panel-body"></div>
+    </section>
+
+    <section id="personal-model-hypotheses" class="panel module-panel" data-module="Personal Model Hypotheses">
+      <div class="module-heading">
+        <h2>Personal Model Hypotheses 个人模型假设</h2>
+        <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+      </div>
+      <div class="panel-body"></div>
+    </section>
+
+    <section id="commitments-gates" class="panel module-panel" data-module="Commitments & Gates">
+      <div class="module-heading">
+        <h2>Commitments &amp; Gates 承诺与门槛</h2>
+        <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+      </div>
+      <div class="panel-body"></div>
+    </section>
+
+    <section id="recent-history" class="panel module-panel" data-module="Recent History">
+      <div class="module-heading">
+        <h2>Recent History 最近历史</h2>
+        <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+      </div>
+      <div class="panel-body"></div>
+    </section>
+
+    <section id="audit-entry" class="panel module-panel" data-module="Audit Entry">
+      <div class="module-heading">
+        <h2>Audit Entry 审计入口</h2>
+        <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+      </div>
+      <div class="panel-body"></div>
+    </section>
+
+    <section id="source-audit" class="panel module-panel" data-module="Source Metadata & Snapshot Audit">
+      <div class="module-heading">
+        <h2>Source Metadata &amp; Snapshot Audit</h2>
+        <button class="toggle-module" type="button" aria-expanded="true">收起</button>
+      </div>
+      <div class="panel-body"></div>
+    </section>
+    </section>
+  </main>
+
+  <script src="./war_room.js"></script>
+</body>
+</html>
