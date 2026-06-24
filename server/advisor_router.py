@@ -169,6 +169,17 @@ async def handle_chat(request: AdvisorChatRequest) -> AdvisorChatResponse:
         quick_search = search_news(normalized_message)
         if quick_search.get("items"):
             external_context = quick_search
+
+    # ── External Capability Gateway: weather/search/page without API keys ──
+    if not external_context.get("items"):
+        try:
+            from server.services.external_capability_gateway import enhance_for_advisor
+            gateway_result = enhance_for_advisor(normalized_message, task_type)
+            if gateway_result.get("data_status") == "available" and gateway_result.get("items"):
+                external_context = gateway_result
+        except Exception:
+            pass  # Gateway is supplementary, never blocks
+
     external_items = external_context.get("items", [])
     external_sources = [
         {
