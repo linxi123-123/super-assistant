@@ -257,7 +257,7 @@ def build_claude_args(base_command: str, prompt: str) -> list[str]:
     claude_args = [
         "-p", prompt,
         "--output-format", "json",
-        "--tools", "default",
+        "--permission-mode", "bypassPermissions",
     ]
 
     # Check if it's a cmd.exe wrapper
@@ -297,9 +297,10 @@ def run_claude(job: dict) -> dict:
         prompt_file = None
 
     # Build command: -p for non-interactive, --output-format json for structured output.
+    # --permission-mode bypassPermissions needed for WebSearch/WebFetch in non-interactive mode.
     # Prompt is piped via stdin to avoid issues with multi-line prompts and cmd.exe quoting.
     base_cmd = _get_base_cmd()
-    safe_args = base_cmd + ["-p", "--output-format", "json", "--tools", "default"]
+    safe_args = base_cmd + ["-p", "--output-format", "json", "--permission-mode", "bypassPermissions"]
     log(f"JOB {job_id}: Running Claude with task_type={task_type} in {cwd}")
     log(f"JOB {job_id}: Command: {' '.join(safe_args)} (prompt via stdin, {len(prompt)} chars)")
 
