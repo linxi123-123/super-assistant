@@ -170,6 +170,22 @@ async def handle_chat(request: AdvisorChatRequest) -> AdvisorChatResponse:
         if quick_search.get("items"):
             external_context = quick_search
 
+    # ── External Intelligence Resolver: current-fact queries ──
+    try:
+        from server.services.external_intelligence_resolver import resolve, is_current_fact_query
+        if is_current_fact_query(normalized_message):
+            resolver_result = resolve(normalized_message)
+            if resolver_result.get("status") == "resolved" and resolver_result.get("answer"):
+                external_context = {
+                    "data_status": "available",
+                    "items": [{"source": "public_web", "source_name": "公开网页",
+                               "title": "当前事实查询", "summary": resolver_result["answer"],
+                               "url": "", "data_type": "current_fact"}],
+                    "resolver_answer": resolver_result["answer"],
+                }
+    except Exception:
+        pass  # Resolver is supplementary
+
     # ── External Capability Gateway: weather/search/page without API keys ──
     if not external_context.get("items"):
         try:
