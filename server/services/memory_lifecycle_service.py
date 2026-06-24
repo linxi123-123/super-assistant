@@ -87,7 +87,21 @@ def apply_memory_feedback(audit_id: str, memory_id: str, feedback_type: str, com
             "INSERT INTO memory_quality_events (id, memory_id, audit_id, event_type, note, created_at) VALUES (?, ?, ?, ?, ?, ?)",
             (f"mq_{uuid.uuid4().hex[:12]}", memory_id, audit_id, feedback_type, comment, created_at),
         )
-    return {"status": "ok", "memory_id": memory_id, "new_status": new_status, "updated": updated}
+    # If confirmed, also write to LLM Wiki
+    wiki_result = {"status": "skipped"}
+    if feedback_type == "confirm" and new_status == "confirmed":
+        try:
+            with get_connection() as conn:
+                row = conn.execute(
+                    "SELECT memory_type, content_summary FROM candidate_memories WHERE id = ?", (memory_id,)
+                ).fetchone()
+                if row:
+                    from server.services.llm_wiki_write_service import write_confirmed_memory_to_wiki
+                    wiki_result = write_confirmed_memory_to_wiki(row["memory_type"], row["content_summary"])
+        except Exception:
+            wiki_result = {"status": "error", "reason": "wiki_write_exception"}
+
+    return {"status": "ok", "memory_id": memory_id, "new_status": new_status, "updated": updated, "wiki": wiki_result}
 
 
 def record_advisor_feedback(audit_id: str, feedback_type: str, comment: str = "") -> dict[str, Any]:
