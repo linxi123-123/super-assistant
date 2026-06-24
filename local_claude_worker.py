@@ -190,7 +190,7 @@ CLAUDE_PROMPT_TEMPLATE = """你是我的个人外脑深度推理 Agent。
 额外上下文：
 {context_json}
 
-请输出 JSON（不要 markdown 代码块）：
+请严格输出 JSON（不要 markdown 代码块，answer_mode 必填不能为空）：
 
 {{
   "answer_mode": "personal_memory | public_research | mixed | task_execution",
@@ -257,6 +257,7 @@ def build_claude_args(base_command: str, prompt: str) -> list[str]:
     claude_args = [
         "-p", prompt,
         "--output-format", "json",
+        "--tools", "default",
     ]
 
     # Check if it's a cmd.exe wrapper
@@ -298,7 +299,7 @@ def run_claude(job: dict) -> dict:
     # Build command: -p for non-interactive, --output-format json for structured output.
     # Prompt is piped via stdin to avoid issues with multi-line prompts and cmd.exe quoting.
     base_cmd = _get_base_cmd()
-    safe_args = base_cmd + ["-p", "--output-format", "json"]
+    safe_args = base_cmd + ["-p", "--output-format", "json", "--tools", "default"]
     log(f"JOB {job_id}: Running Claude with task_type={task_type} in {cwd}")
     log(f"JOB {job_id}: Command: {' '.join(safe_args)} (prompt via stdin, {len(prompt)} chars)")
 
