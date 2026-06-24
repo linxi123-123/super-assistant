@@ -1,52 +1,137 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>超级助理</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <main class="app-shell">
-      <header class="app-header">
-        <span class="brand-mark">谋</span>
-        <div>
-          <strong>超级助理</strong>
-          <span id="greeting">上午好</span><span id="greetingName" class="clickable-name" title="点击切换用户"></span>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super Assistant · 个人外脑工作台</title>
+  <link rel="stylesheet" href="./styles.css?v=20260625" />
+</head>
+<body>
+  <div class="workbench">
+
+    <!-- ── LEFT SIDEBAR ────────────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <span class="logo-mark">谋</span>
+        <div class="brand-text">
+          <strong>Super Assistant</strong>
+          <small>个人外脑工作台</small>
         </div>
-        <small id="dateLine"></small>
-      </header>
-
-      <section id="dailyBriefing" class="briefing-grid">
-        <div class="briefing-card"><h3>昨日复盘</h3><div id="yesterdayCard"><p>加载中…</p></div></div>
-        <div class="briefing-card"><h3>今日焦点</h3><div id="todayCard"><p>加载中…</p></div></div>
-        <div class="briefing-card"><h3>明日建议</h3><div id="tomorrowCard"><p>加载中…</p></div></div>
-      </section>
-
-      <nav class="quick-bar">
-        <button class="quick-btn" data-prompt="今天广州天气怎么样？">☀ 天气</button>
-        <button class="quick-btn" data-prompt="今天股市怎么样？请结合我的 watchlist 分析。">📈 市场</button>
-        <button class="quick-btn" data-prompt="今天 AI 有什么最新资讯和论文？">🤖 AI 资讯</button>
-        <button class="quick-btn" data-prompt="请根据我当前项目状态，生成今天最该做的 3 个任务。">✅ 任务</button>
-        <button class="quick-btn" data-prompt="请帮我做一次决策复盘：当前项目下一步最该做什么？">🔍 复盘</button>
-      </nav>
-
-      <div id="conversation" class="conversation-flow"></div>
-
-      <div id="typingIndicator" class="typing-indicator" hidden>
-        <span></span><span></span><span></span>
       </div>
 
-      <form id="chatForm" class="chat-bar">
-        <button id="voiceBtn" type="button" class="voice-btn" title="语音输入">🎤</button>
-        <textarea id="chatInput" rows="1" placeholder="跟超级助理说…" required></textarea>
-        <button type="submit" aria-label="发送">↑</button>
+      <div class="sidebar-section">
+        <div class="section-label">当前模式</div>
+        <div class="mode-badge active" id="modeBadge">
+          <span class="pulse"></span>
+          Claude Code 外脑
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">LLM Wiki</div>
+        <div class="wiki-status" id="wikiStatus">
+          <span class="wiki-icon">📁</span>
+          <span>本机外脑已连接</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">最近任务</div>
+        <div class="recent-tasks" id="recentTasks">
+          <span class="dim-text">暂无任务记录</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── MAIN WORK AREA ──────────────────────────── -->
+    <main class="main-area" id="mainArea">
+      <header class="work-area-header">
+        <h2 id="welcomeGreeting">今天想让我帮你处理什么？</h2>
+        <span class="header-date" id="headerDate">加载中...</span>
+      </header>
+
+      <div class="conversation" id="conversation">
+        <!-- Welcome state -->
+        <div class="welcome-state" id="welcomeState">
+          <div class="welcome-icon">
+            <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="36" stroke="#6366f1" stroke-width="2" opacity="0.2"/><circle cx="40" cy="40" r="20" stroke="#6366f1" stroke-width="1.5" opacity="0.4"/><circle cx="40" cy="40" r="6" fill="#6366f1" opacity="0.7"/></svg>
+          </div>
+          <p class="welcome-text">输入你的问题，Claude Code 外脑将进行深度推理</p>
+          <div class="welcome-hints">
+            <span>深度分析</span><span>项目规划</span><span>决策推演</span><span>记忆检索</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Processing indicator -->
+      <div class="processing-panel" id="processingPanel" hidden>
+        <div class="proc-header">
+          <div class="proc-spinner"></div>
+          <span id="procTitle">处理中...</span>
+        </div>
+        <div class="proc-stages">
+          <div class="proc-stage" id="stageCreate"><span class="stage-dot"></span>创建任务</div>
+          <div class="proc-stage" id="stageClaim"><span class="stage-dot"></span>等待 Worker</div>
+          <div class="proc-stage" id="stageRun"><span class="stage-dot"></span>Claude Code 推理</div>
+          <div class="proc-stage" id="stageDone"><span class="stage-dot"></span>完成</div>
+        </div>
+        <span class="proc-jobid" id="procJobId"></span>
+      </div>
+
+      <!-- Chat input -->
+      <form class="input-area" id="chatForm">
+        <textarea id="chatInput" rows="1"
+          placeholder="输入你想让我分析、规划或处理的问题..."
+          required></textarea>
+        <button type="submit" id="sendBtn" aria-label="发送">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
       </form>
 
-      <footer class="app-footer">
-        <p id="statusLine">就绪 · 所有判断基于外部证据与长期记忆</p>
-      </footer>
+      <div class="status-bar" id="statusBar">
+        <span id="statusText">就绪 · 本机 Claude Code 外脑待命</span>
+      </div>
     </main>
-    <script src="./app.js?v=20260616"></script>
-  </body>
+
+    <!-- ── RIGHT CONTEXT PANEL ──────────────────────── -->
+    <aside class="context-panel" id="contextPanel">
+      <div class="panel-header">
+        <strong>外脑状态</strong>
+      </div>
+
+      <div class="panel-section" id="panelWorkerStatus">
+        <div class="section-label">Worker</div>
+        <div class="panel-status offline" id="workerStatusBadge">待命中</div>
+      </div>
+
+      <div class="panel-section" id="panelJobInfo" hidden>
+        <div class="section-label">当前任务</div>
+        <code class="job-code" id="panelJobId">—</code>
+      </div>
+
+      <div class="panel-section" id="panelConfidence" hidden>
+        <div class="section-label">置信度</div>
+        <span class="confidence-value" id="panelConfidenceValue">—</span>
+      </div>
+
+      <div class="panel-section" id="panelNextActions" hidden>
+        <div class="section-label">下一步建议</div>
+        <ul class="action-list" id="panelNextActionsList"></ul>
+      </div>
+
+      <div class="panel-section" id="panelMemoryUpdates" hidden>
+        <div class="section-label">建议记忆更新</div>
+        <div id="panelMemoryUpdatesContent"></div>
+      </div>
+
+      <div class="panel-section" id="panelWarnings" hidden>
+        <div class="section-label">注意事项</div>
+        <ul class="warning-list" id="panelWarningsList"></ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="./app.js?v=20260625"></script>
+</body>
 </html>
