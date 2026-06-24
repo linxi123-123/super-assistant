@@ -10,6 +10,7 @@ from server.advisor_router import handle_chat
 from server.config import get_settings, startup_warnings
 from server.database import init_db
 from server.middleware.tenant_context import TenantContextMiddleware
+from server.routers.local_agent_router import router as local_agent_router
 from server.schemas.advisor_schemas import AdvisorChatRequest, AdvisorChatResponse
 from server.schemas.radar_schemas import RadarRuleCreateRequest, RadarRunRequest, TouchpointFeedbackRequest
 from server.services.radar_service import create_radar_rule, get_radar_rule, get_radar_run, list_radar_rules, run_radar_rule
@@ -51,6 +52,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.add_middleware(TenantContextMiddleware)
+app.include_router(local_agent_router)
 
 
 @app.on_event("startup")

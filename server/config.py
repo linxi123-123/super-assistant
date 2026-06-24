@@ -47,6 +47,9 @@ class Settings:
     memory_recent_limit: int
     memory_allow_llm_context: bool
     app_env: str
+    local_claude_worker_enabled: bool
+    local_worker_token: str
+    local_agent_job_timeout_seconds: int
 
     @property
     def llm_mock_mode(self) -> bool:
@@ -131,6 +134,9 @@ def get_settings() -> Settings:
         memory_recent_limit=int(os.getenv("MEMORY_RECENT_LIMIT", "5") or "5"),
         memory_allow_llm_context=os.getenv("MEMORY_ALLOW_LLM_CONTEXT", "true").strip().lower() not in {"0", "false", "no"},
         app_env=os.getenv("APP_ENV", "local"),
+        local_claude_worker_enabled=os.getenv("LOCAL_CLAUDE_WORKER_ENABLED", "false").strip().lower() in {"1", "true", "yes"},
+        local_worker_token=os.getenv("LOCAL_WORKER_TOKEN", ""),
+        local_agent_job_timeout_seconds=int(os.getenv("LOCAL_AGENT_JOB_TIMEOUT_SECONDS", "900") or "900"),
     )
 
 
@@ -143,4 +149,6 @@ def startup_warnings(settings: Settings | None = None) -> list[str]:
         warnings.append(f"LLM_MODE=openai but {settings.provider} API key is not set; LLM Gateway will fall back to mock mode.")
     elif settings.llm_mock_mode:
         warnings.append("LLM Gateway will use mock mode.")
+    if settings.local_claude_worker_enabled and not settings.local_worker_token:
+        warnings.append("LOCAL_CLAUDE_WORKER_ENABLED=true but LOCAL_WORKER_TOKEN is not set; worker endpoints will reject all requests.")
     return warnings

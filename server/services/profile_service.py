@@ -36,7 +36,7 @@ def _profile_path(user_id: str) -> Path:
 def ensure_profile_files() -> None:
     EXAMPLE.parent.mkdir(parents=True, exist_ok=True)
     if not EXAMPLE.exists():
-        EXAMPLE.write_text(json.dumps(EXAMPLE_PROFILE, ensure_ascii=False, indent=2), encoding="utf-8")
+        EXAMPLE.write_text(json.dumps(EMPTY_PROFILE, ensure_ascii=False, indent=2), encoding="utf-8")
     if not LOCAL.exists():
         shutil.copyfile(EXAMPLE, LOCAL)
 

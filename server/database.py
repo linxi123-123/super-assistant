@@ -373,6 +373,26 @@ def init_db() -> None:
             )
             """
         )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS local_agent_jobs (
+                id TEXT PRIMARY KEY,
+                user_id TEXT NOT NULL DEFAULT 'default_user',
+                tenant_id TEXT NOT NULL DEFAULT 'default_tenant',
+                task_type TEXT NOT NULL,
+                status TEXT NOT NULL,
+                question TEXT NOT NULL,
+                context_json TEXT NOT NULL DEFAULT '{}',
+                result_json TEXT NOT NULL DEFAULT '{}',
+                error TEXT NOT NULL DEFAULT '',
+                claimed_by TEXT NOT NULL DEFAULT '',
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL,
+                claimed_at TEXT DEFAULT '',
+                completed_at TEXT DEFAULT ''
+            )
+            """
+        )
         _ensure_columns(
             conn,
             "action_tasks",
